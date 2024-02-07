@@ -72,7 +72,7 @@ body {
     color: var(--footer_text_color);
     background: rgba(0,0,0,0.6);
     padding: 1em;
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 
 .footer_a_item {
@@ -276,5 +276,16 @@ main {
     .header_h_item {
         width: 92vw;
         text-align: center;
+    }
+    .header_h2_item {
+        width: 92vw;
+        text-align: center;
+    }
+    .footer_a_item {
+        font-size: 100.5%
+    }
+
+    .footer_b_item {
+        font-size: 100.5%
     }
 }
