@@ -285,10 +285,10 @@ main {
         text-align: center;
     }
     .footer_a_item {
-        width: 52vw;
+        font-size: 0.5em;
     }
 
     .footer_b_item {
-        width: 52vw;
+        font-size: 0.5em;
     }
 }
