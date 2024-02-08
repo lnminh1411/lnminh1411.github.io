@@ -5,25 +5,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --image_border_color: #000;
-    --image_border_px: 3px;
-    --image_width: 140px;
-    --image_height: 140px;
-    --title_color: #fff;
-    --description_color: #f1c40f;
-    --svg_color: #fff;
-    --menu_background_color: #0e0e0e;
-    --menu_text_color: #fff;
-    --menu_active_text_color: #f1c40f;
-    --button_background_color: #0e0e0e;
-    --button_text_color: #fff;
-    --button_text_hover_color: #f1c40f;
-    --textarea_background_color: #0e0e0e;
-    --textarea_text_color: #fff;
-    --textarea_link_text_color: #f1c40f;
-    --footer_background_color: #0e0e0e;
-    --footer_text_color: #fff;
-    --footer_link_text_color: #f1c40f;
 }
 
 html{
@@ -72,14 +53,14 @@ body {
 }
 
 .footer_div_item {
-    color: var(--footer_text_color);
+    color: #fff;
     background: rgba(0,0,0,0.6);
     padding: 1em;
     margin-top: 1em;
 }
 
 .footer_a_item {
-    color: var(--footer_link_text_color);
+    color: #f1c40f;
     text-decoration: none;
     z-index: 2;
 }
@@ -124,6 +105,7 @@ main {
     text-align: center;
     vertical-align: middle
 }
+
 
 .header_links_item {
     width: 1.6em;
@@ -285,10 +267,10 @@ main {
         text-align: center;
     }
     .footer_a_item {
-        font-size: 0.5em;
+        font-size: 0.9em;
     }
 
     .footer_b_item {
-        font-size: 0.5em;
+        font-size: 0.9em;
     }
 }
