@@ -277,6 +277,13 @@ main {
     font-size: 1.4vw
 }
 
+.footer {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 2vw
+}
+
 @media screen and (max-width:768px) {
     .aboutmesection {
         width: 90vw
@@ -292,6 +299,10 @@ main {
 
     .clock,p {
         font-size: 3vw
+    }
+
+    .footer {
+        font-size: large
     }
 }
 
