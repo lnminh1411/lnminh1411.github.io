@@ -112,7 +112,7 @@
 html {
     font-size: 155.5%;
     -ms-overflow-style: none;
-    scrollbar-width: none
+    scrollbar-width: none;
 }
 
 html::-webkit-scrollbar {
@@ -253,7 +253,7 @@ header section pre {
 
 main {
     display: block;
-    margin-top: 29vh
+    margin-top: 29vh;
 }
 
 .aboutmesection {
@@ -266,8 +266,9 @@ main {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    margin-bottom: 10vh;
-    margin-top: 8vh
+    margin-bottom: 8vh;
+    margin-top: 8vh;
+    overflow-x: hidden;
 }
 
 .clock {
@@ -282,6 +283,10 @@ main {
     vertical-align: middle;
     line-height: 50px;
     font-size: 2vw
+}
+
+.trophy {
+    width: 68vw;
 }
 
 @media screen and (max-width:768px) {
@@ -304,11 +309,31 @@ main {
     .footer {
         font-size: large
     }
+
+    .trophy {
+        width: 85vw;
+    }
+    
+    .stats {
+        width: 85vw;
+    }
+
+    .lang {
+        width: 85vw;
+    }
+
+    .streak {
+        width: 85vw;
+    }
+
+    h3 {
+        font-size: 5vw;
+    }
+
 }
 
 h3 {
     text-decoration: underline;
-    font-weight: 700;
     opacity: .7
 }
 
@@ -317,10 +342,16 @@ h3 {
     opacity: .35;
     position: absolute;
     bottom: 10px;
-    padding-right: 280px;
     text-align: left;
     -webkit-animation: 2s headerAnimate;
     -moz-animation: 2s headerAnimate;
     -o-animation: 2s headerAnimate;
     animation: 2s headerAnimate
+}
+
+.mobile-display{display:none}
+.desktop-display{display:block}
+@media (max-width:800px){
+ .desktop-display {display:none}
+ .mobile-display {display:block}
 }

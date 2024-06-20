@@ -37,24 +37,22 @@ $(window)
             .css('height', `${percent}%`);
         $('.factcontainer')
             .css('opacity', `${factopac}`);
-        console.log(scroll)
     });
 
 $(document)
     .ready(function () {
-        let url = "https://uselessfacts.jsph.pl/api/v2/facts/random";
-        $.getJSON(url, {
-                format: "json"
-            })
-            .done(function (data) {
-                $("#fact")
-                    .text(data.text);
-            });
+        async function loadfacts() {
+            const res = await fetch('./facts.json');
+            const names = await res.json();
+            const random = Math.floor(Math.random() * names.facts.length);
+            $("#fact").text(names.facts[random].fact);
+          }
+        loadfacts()
     });
 
 setInterval(function () {
     const d = spacetime.now('asia/saigon')
-    const diff = spacetime.now()
+    const client = spacetime.now()
     if (d.d.getHours() <= 9) {
         var hrs = '0' + d.d.getHours() + ':'
     } else {
@@ -70,10 +68,10 @@ setInterval(function () {
     } else {
         var sec = d.d.getSeconds()
     }
-    if (diff.tz == 'asia/saigon') {
+    if ((d.d.getMinutes() - client.d.getMinutes()) === 0) {
         var difftime = '(Same time)'
     } else {
-        var difftime = `(Offset by ${diff.d.getHours() - d.d.getHours()} hours)`
+        var difftime = `(Offset by ${client.d.getHours() - d.d.getHours()} hours)`
     }
     $("#time")
         .text(hrs + min + sec + ' ' + difftime);
