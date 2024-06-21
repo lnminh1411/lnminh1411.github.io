@@ -371,3 +371,11 @@ h3 {
         display: block
     }
 }
+
+#statsdot {
+    display: inline-block;
+    margin-right: .1em;
+    border-radius: 50%;
+    width: .6em;
+    height: .6em;
+}

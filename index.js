@@ -33,19 +33,17 @@ $(window)
                 factopac = 0
             }
         }
-        $('#progressbar')
-            .css('height', `${percent}%`);
-        $('.factcontainer')
-            .css('opacity', `${factopac}`);
+        $('#progressbar').css('height', `${percent}%`);
+        $('.factcontainer').css('opacity', `${factopac}`);
     });
 
 $(document)
     .ready(function () {
         async function loadfacts() {
             const res = await fetch('./facts.json');
-            const names = await res.json();
-            const random = Math.floor(Math.random() * names.facts.length);
-            $("#fact").text(names.facts[random].fact);
+            const factsjs = await res.json();
+            const random = Math.floor(Math.random() * factsjs.facts.length);
+            $("#fact").text(factsjs.facts[random].fact);
           }
         loadfacts()
     });
@@ -73,6 +71,24 @@ setInterval(function () {
     } else {
         var difftime = `(Offset by ${client.d.getHours() - d.d.getHours()} hours)`
     }
-    $("#time")
-        .text(hrs + min + sec + ' ' + difftime);
+    $("#time").text(hrs + min + sec + ' ' + difftime);
+    async function loadstatus() {
+        const Color = { online: '#4b8', idle: '#fa1', dnd: '#f44', offline: '#778' };
+        const res = await fetch("https://api.lanyard.rest/v1/users/783652998319833118");
+        const statjs = await res.json();
+        $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`)
+        if (statjs.data.discord_status === 'dnd') {
+            $("#status").text("Busy")
+        }
+        if (statjs.data.discord_status === 'online') {
+            $("#status").text("Online")
+        }
+        if (statjs.data.discord_status === 'idle') {
+            $("#status").text("AFK")
+        }
+        if (statjs.data.discord_status === 'offline') {
+            $("#status").text("Offline")
+        }
+    }
+    loadstatus()
 }, 1000)
