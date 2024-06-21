@@ -78,13 +78,13 @@ setInterval(function () {
         const statjs = await res.json();
         $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`)
         if (statjs.data.discord_status === 'dnd') {
-            $("#status").text("Busy")
+            $("#status").text("Busy / Not Available")
         }
         if (statjs.data.discord_status === 'online') {
             $("#status").text("Online")
         }
         if (statjs.data.discord_status === 'idle') {
-            $("#status").text("AFK")
+            $("#status").text("Not Active (On discord)")
         }
         if (statjs.data.discord_status === 'offline') {
             $("#status").text("Offline")
