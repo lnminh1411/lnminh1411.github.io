@@ -1,1 +1,94 @@
-(window.setScroll=()=>document.body.style.setProperty("--yval",scrollY/2/innerHeight))(),["scroll","resize"].forEach((t=>addEventListener(t,setScroll)));let bg=document.querySelector("#bg");addEventListener("touchstart",(()=>bg.style.setProperty("--times","0"))),addEventListener("mousemove",(({clientX:t,clientY:e})=>{bg.style.setProperty("--x",90*(t-innerWidth/2)/innerWidth+"px"),bg.style.setProperty("--y",90*(e-innerHeight/2)/innerHeight+"px")}));let playSound=()=>new Audio("/disappointment.mp3").play(),playSound2=()=>new Audio("/hehe~.mp3").play();$(window).scroll((function(){let t=$(window).scrollTop(),e=$(document).height(),s=$(window).height();t<=10?(percent=10,factopac=.35):(percent=t/(e-s)*100,t>10&&(factopac=0)),$("#progressbar").css("height",`${percent}%`),$(".factcontainer").css("opacity",`${factopac}`)})),$(document).ready((function(){!async function(){const t=await fetch("./facts.json"),e=await t.json(),s=Math.floor(Math.random()*e.facts.length);$("#fact").text(e.facts[s].fact)}();const t=["A professional in Undefined","Creating solution for absolutely nothing","Nothing make sense","Technically good!","≈70% bug free!","Tell your friends about this.","ReferenceError: header.txt Undefined","Nice to meet you!","√-1 love you!","12345678 is a bad password!","Have a great day!","There are no real limits, not even the sky!","!false is actually true!","It's not a bug, it's a feature!","If it works, it works.",'print("Hello World!")',"Created with just 649 lines of code!",'Playing hide and seek with a ";"',"How is this working!?","Time wasted creating this: A lot","It's either !Yes or No","If + else = elif","What a pain!","Mobile friendly!","Perfectly balanced!","EMOTIONAL DAMAGE!","It's either !No or Yes"];$("#titletxt").text(t[Math.floor(Math.random()*t.length)])})),setInterval((function(){const t=spacetime.now("asia/saigon"),e=spacetime.now();if(t.d.getHours()<=9)var s="0"+t.d.getHours()+":";else s=t.d.getHours()+":";if(t.d.getMinutes()<=9)var o="0"+t.d.getMinutes()+":";else o=t.d.getMinutes()+":";if(t.d.getSeconds()<=9)var a="0"+t.d.getSeconds();else a=t.d.getSeconds();if(t.d.getMinutes()-e.d.getMinutes()==0)var n="(Same time)";else n=`(Offset by ${e.d.getHours()-t.d.getHours()} hours)`;$("#time").text(s+o+a+" "+n),async function(){const t=await fetch("https://api.lanyard.rest/v1/users/783652998319833118"),e=await t.json();$("#statsdot").css("background",`${{online:"#4b8",idle:"#fa1",dnd:"#f44",offline:"#778"}[e.data.discord_status]}`),"dnd"===e.data.discord_status&&$("#status").text("Busy / Not Available"),"online"===e.data.discord_status&&$("#status").text("Online"),"idle"===e.data.discord_status&&$("#status").text("Not Active (On discord)"),"offline"===e.data.discord_status&&$("#status").text("Offline")}()}),1e3);
+/*Credit to AutumnVN for the background code! (https://chino.pages.dev/)*/
+(window.setScroll = () => document.body.style.setProperty('--yval', (scrollY / 2) / innerHeight))();
+['scroll', 'resize'].forEach(i => addEventListener(i, setScroll));
+let bg = document.querySelector('#bg');
+addEventListener('touchstart', () => bg.style.setProperty('--times', '0'));
+addEventListener('mousemove', ({
+    clientX,
+    clientY
+}) => {
+    bg.style.setProperty('--x', `${90 * (clientX - innerWidth / 2) / innerWidth}px`);
+    bg.style.setProperty('--y', `${90 * (clientY - innerHeight / 2) / innerHeight}px`);
+});
+
+let playSound = () => new Audio("/disappointment.mp3").play();
+let playSound2 = () => new Audio("/hehe~.mp3").play();
+
+$(window)
+    .scroll(function () {
+        let scroll = $(window)
+            .scrollTop(),
+            h = $(document)
+            .height(),
+            w = $(window)
+            .height();
+        if (scroll <= 10) {
+            percent = 10
+            factopac = .35
+        } else {
+            percent = (scroll / (h - w)) * 100
+            if (scroll > 10) {
+                factopac = 0
+            }
+        }
+        $('#progressbar').css('height', `${percent}%`);
+        $('.factcontainer').css('opacity', `${factopac}`);
+    });
+
+$(document)
+    .ready(function () {
+        async function loadfacts() {
+            const res = await fetch('./facts.json');
+            const factsjs = await res.json();
+            const random = Math.floor(Math.random() * factsjs.facts.length);
+            $("#fact").text(factsjs.facts[random].fact);
+          }
+        loadfacts()
+        const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with 649 lines of code!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes"]
+        $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
+    });
+
+setInterval(function () {
+    const d = spacetime.now('asia/saigon')
+    const client = spacetime.now()
+    if (d.d.getHours() <= 9) {
+        var hrs = '0' + d.d.getHours() + ':'
+    } else {
+        var hrs = d.d.getHours() + ':'
+    }
+    if (d.d.getMinutes() <= 9) {
+        var min = '0' + d.d.getMinutes() + ':'
+    } else {
+        var min = d.d.getMinutes() + ':'
+    }
+    if (d.d.getSeconds() <= 9) {
+        var sec = '0' + d.d.getSeconds()
+    } else {
+        var sec = d.d.getSeconds()
+    }
+    if ((d.d.getMinutes() - client.d.getMinutes()) === 0) {
+        var difftime = '(Same time)'
+    } else {
+        var difftime = `(Offset by ${client.d.getHours() - d.d.getHours()} hours)`
+    }
+    $("#time").text(hrs + min + sec + ' ' + difftime);
+    async function loadstatus() {
+        const Color = { online: '#4b8', idle: '#fa1', dnd: '#f44', offline: '#778' };
+        const res = await fetch("https://api.lanyard.rest/v1/users/783652998319833118");
+        const statjs = await res.json();
+        $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`)
+        if (statjs.data.discord_status === 'dnd') {
+            $("#status").text("Busy / Not Available")
+        }
+        if (statjs.data.discord_status === 'online') {
+            $("#status").text("Online")
+        }
+        if (statjs.data.discord_status === 'idle') {
+            $("#status").text("Not Active (On discord)")
+        }
+        if (statjs.data.discord_status === 'offline') {
+            $("#status").text("Offline")
+        }
+    }
+    loadstatus()
+}, 1000)
