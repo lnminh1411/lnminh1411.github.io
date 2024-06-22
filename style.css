@@ -295,7 +295,7 @@ main {
     width: 68vw
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:800px) {
     .aboutmesection {
         width: 90vw
     }
@@ -331,6 +331,11 @@ main {
     .streak {
         width: 85vw
     }
+
+    .prodtime {
+        width: 85vw
+    }
+
 
     h3 {
         font-size: 5vw
@@ -378,4 +383,10 @@ h3 {
     border-radius: 50%;
     width: .6em;
     height: .6em;
+}
+
+@media (max-width:886px) {
+    .contribution {
+        display: none
+    }    
 }

@@ -11,10 +11,8 @@ addEventListener('mousemove', ({
     bg.style.setProperty('--y', `${90 * (clientY - innerHeight / 2) / innerHeight}px`);
 });
 
-let playSound = () => new Audio("/disappointment.mp3")
-    .play();
-let playSound2 = () => new Audio("/hehe~.mp3")
-    .play();
+let playSound = () => new Audio("/disappointment.mp3").play();
+let playSound2 = () => new Audio("/hehe~.mp3").play();
 
 $(window)
     .scroll(function () {
@@ -46,6 +44,8 @@ $(document)
             $("#fact").text(factsjs.facts[random].fact);
           }
         loadfacts()
+        const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with 650 lines of code!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted here: A lot", "It's either !Yes or No", "If else elif", "What a pain!"]
+        $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
     });
 
 setInterval(function () {
