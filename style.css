@@ -247,7 +247,7 @@ header section pre {
     opacity: .35
 }
 
-@media screen and (max-width:1090px) {
+@media (max-width:1090px) {
     svg text {
         font-size: 14.3vw
     }
@@ -297,10 +297,10 @@ main {
 .stuffs {
     width: 60vw;
     display: block;
-    margin: auto
+    margin: auto;
 }
 
-@media screen and (max-width:800px) {
+@media (max-width:800px) {
     .aboutmesection {
         width: 90vw
     }
@@ -321,24 +321,27 @@ main {
         font-size: large
     }
 
-    .lang,.stats,.streak,.trophy {
+    .trophy {
+        width: 85vw
+    }
+
+    .stats {
+        width: 85vw
+    }
+
+    .lang {
+        width: 85vw
+    }
+
+    .streak {
         width: 85vw
     }
 
     h3 {
         font-size: 5vw
     }
-
     .stuffs {
-        width: 90vw
-    }
-
-    .desktop-display {
-        display: none
-    }
-
-    .mobile-display {
-        display: block
+        width: 60vw;
     }
 }
 
@@ -367,16 +370,26 @@ h3 {
     display: block
 }
 
+@media (max-width:800px) {
+    .desktop-display {
+        display: none
+    }
+
+    .mobile-display {
+        display: block
+    }
+}
+
 #statsdot {
     display: inline-block;
     margin-right: .1em;
     border-radius: 50%;
     width: .6em;
-    height: .6em
+    height: .6em;
 }
 
 @media (max-width:910px) {
     .contribution {
         display: none
-    }
+    }    
 }
