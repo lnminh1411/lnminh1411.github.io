@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN crossorigin=anonymous>
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js integrity=sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL crossorigin=anonymous></script>
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css rel=stylesheet>
+    <title>About me</title>
+    <meta name=description content="Basically an about me page">
+    <link rel=stylesheet href=style.css>
+    <link href=https://unpkg.com/@csstools/normalize.css rel=stylesheet />
+    <script src=https://polyfill-fastly.io/v3/polyfill.min.js></script>
+    <script src=https://code.jquery.com/jquery-3.7.1.min.js integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin=anonymous></script>
+    <script src=https://unpkg.com/spacetime></script>
+  </head>
+  <body style=--scroll:0><noscript><a href="https://support.google.com/adsense/answer/12654?hl=en">This site requires javascript to be enabled! Enable javascript on your browser or click on this message for support</a></noscript>
+    <div id=bg></div>
+    <div id=progressbar></div>
+    <div style=font-size:x-small;position:absolute;top:0;left:0;color:#c3bdbd;cursor:not-allowed onclick=playSound()>tip: you can scroll down!</div>
+    <div class=clock> Current time in Vietnam (UTC+7): <div id=time></div>
+    I'm currently: <span id="statsdot"></span> <span id="status"></span>
+    </div>
+    <header>
+      <section style="width:100vw">
+        <h1><a href=https://youtu.be/p7YXXieghto target=_blank style=cursor:not-allowed><svg width=100% height=100%>
+              <rect x=0 y=0 width=100% height=100% style=fill:none></rect><text x=50% y=96% text-anchor=middle>LNMinh</text>
+            </svg>
+            <pre id="titletxt" style="font-family:'Inter'">This page isn't working correctly!</pre>
+          </a></h1>
+      </section>
+    </header>
+    <div class=factcontainer>Did you know: <div id=fact style=margin-right:12px>This page isn't working correctly? Check your internet and refresh!</div></div>
+    <main>
+      <h3>Socials:</h3>
+      <div style=align-items:center;opacity:.8><a href=https://discord.com/users/1243939761614356544 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i class="bi bi-discord h3"></i>&emsp;</a><a href=https://github.com/lnminh1411/ target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i class="bi bi-github h3"></i>&emsp;</a><a href=https://www.instagram.com/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i class="bi bi-instagram h3"></i>&emsp;</a><a href=https://m.me/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i class="bi bi-messenger h3"></i>&emsp;</a><a href=https://www.facebook.com/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i class="bi bi-facebook h3"></i>&emsp;</a></div>
+      <div class=aboutmesection>
+        <h3 style=font-weight:400>About me:</h3><a href=https://youtu.be/pGA3WvZdoiE style=cursor:text>
+          <p>Hi there! I'm Nhật Minh (or NMinh for short). I'm currently a 10th grader and a self-taught programmer developing front-end coding skills.I've been building my coding skills since 5th grade (Although having to stop in 8th and 9th grade) and since had have some experience with coding and scripting many languages. Oh yeah, I'm also a Minecraft player in my free time. <br> Wanna contact me? I'm most active on discord, so feel free to reach out to me at any time!</p>
+          <h3 style=font-weight:400>Skills:</h3>
+          <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+          <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="Javascript">
+          <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+          <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML">
+          <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS">
+          <h3 style="font-weight:400;">Other stuffs I use:</h3>
+          <img src="https://img.shields.io/badge/windows%20terminal-4D4D4D?style=for-the-badge&logo=windows%20terminal&logoColor=white" alt="Windows Terminal">
+          <img src="https://img.shields.io/badge/GIT_Terminal-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git Terminal">
+          <img src="https://img.shields.io/badge/Windows_Insider_Canary-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Canary">
+          <img src="https://img.shields.io/badge/WSL-0a97f5?style=for-the-badge&logo=linux&logoColor=white" alt="WSL">
+          <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu">
+          <img src="https://img.shields.io/badge/Firefox_Developer-0078D7?style=for-the-badge&logo=Firefox-Browser&logoColor=white" alt="Firefox Developer">
+          <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VSCode">
+          <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white" alt="Visual Studio">
+          <h3>Some stats</h3><p>(It's not good ngl):</p>
+        </a>
+          <something style="text-decoration:none;">
+            <div class="desktop-display">
+            <a href="https://github.com/lnminh1411">
+              <img style="width: 68vw;" src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=onedark&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
+            </a>
+            </div>
+            <div class="mobile-display">
+              <a href="https://github.com/lnminh1411">
+                <img style="padding-left:3vw;width: 170vw;" src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=onedark&title=Joined2020,Experience,Commits,Issues" />
+                <img style="padding-left:3vw;width: 170vw;" src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=onedark&title=PullRequest,Repositories,Followers,Stars" />
+              </a>
+            </div>
+          <a href="https://github.com/lnminh1411">
+            <img class="stats" src="https://github-readme-stats.vercel.app/api?username=lnminh1411&theme=transparent" />
+          </a>
+          <a href="https://github.com/lnminh1411">
+            <img class="lang" src="https://github-readme-stats.vercel.app/api/top-langs?username=lnminh1411&layout=compact&langs_count=8&card_width=320&theme=transparent" />
+          </a>
+          <a href="https://github.com/lnminh1411">
+            <img class="streak" src="https://github-readme-streak-stats.herokuapp.com/?user=lnminh1411&theme=transparent">
+          </a>
+          <a href="https://github.com/lnminh1411">
+            <img class="prodtime" src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lnminh1411&utcOffset=+7&theme=transparent">
+          </a>
+          <div class="desktop-display contribution">
+          <a href="https://github.com/lnminh1411">
+            <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lnminh1411&theme=transparent">
+          </a>
+          </div>
+          </something>
+      </div>
+      </div>
+    </main>
+    <footer>
+      <div style="background:rgba(0, 0, 0, 0.2);float:none;margin:0 auto;padding-bottom:1px">
+        <a href="https://github.com/lnminh1411/lnminh1411.github.io"><h2 class="footer">NMinh © 2024 | All Rights Reserved</h2></a>
+      </div>
+    </footer>
+  </body>
+  <script src=index.js></script>
+</html>
