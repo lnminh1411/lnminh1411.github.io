@@ -263,8 +263,7 @@ main {
 }
 
 .aboutmesection {
-    background: #272638a1;
-    width: 75vw;
+    width: 85vw;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -295,6 +294,12 @@ main {
     width: 68vw
 }
 
+.stuffs {
+    width: 60vw;
+    display: block;
+    margin: auto
+}
+
 @media screen and (max-width:800px) {
     .aboutmesection {
         width: 90vw
@@ -316,24 +321,24 @@ main {
         font-size: large
     }
 
-    .trophy {
-        width: 85vw
-    }
-
-    .stats {
-        width: 85vw
-    }
-
-    .lang {
-        width: 85vw
-    }
-
-    .streak {
+    .lang,.stats,.streak,.trophy {
         width: 85vw
     }
 
     h3 {
         font-size: 5vw
+    }
+
+    .stuffs {
+        width: 90vw
+    }
+
+    .desktop-display {
+        display: none
+    }
+
+    .mobile-display {
+        display: block
     }
 }
 
@@ -362,26 +367,16 @@ h3 {
     display: block
 }
 
-@media (max-width:800px) {
-    .desktop-display {
-        display: none
-    }
-
-    .mobile-display {
-        display: block
-    }
-}
-
 #statsdot {
     display: inline-block;
     margin-right: .1em;
     border-radius: 50%;
     width: .6em;
-    height: .6em;
+    height: .6em
 }
 
-@media (max-width:886px) {
+@media (max-width:910px) {
     .contribution {
         display: none
-    }    
+    }
 }
