@@ -357,7 +357,7 @@ main {
         stroke-width: 2
     }
 
-    .clock,p {
+    .upright,p {
         font-size: 3vw
     }
 
@@ -430,10 +430,4 @@ h3 {
     border-radius: 50%;
     width: .6em;
     height: .6em;
-}
-
-@media (max-width:910px) {
-    .contribution {
-        display: none
-    }    
 }
