@@ -42,15 +42,13 @@ $(document)
             const factsjs = await res.json();
             const random = Math.floor(Math.random() * factsjs.facts.length);
             $("#fact").text(factsjs.facts[random].fact);
-          }
+        }
         loadfacts()
 
         const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with just 579 lines!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes", "15% coding, 75% debugging, 10% staring into the abyss."]
         $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
-        if (window.innerHeight > 1232) {
-            if(window.innerHeight > window.innerWidth){
-                alert(`Rotate your devices for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`);
-            }
+        if (window.innerHeight > 1232 && (window.innerHeight > window.innerWidth)) {
+            alert(`Rotate your devices for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`);
         }
     });
 
@@ -72,10 +70,10 @@ setInterval(function () {
     } else {
         var sec = d.d.getSeconds()
     }
-    if ((d.d.getMinutes() - client.d.getMinutes()) === 0) {
+    if ((d.d.getHours() - client.d.getHours()) === 0) {
         var difftime = '(Same time)'
     } else {
-        var difftime = `(Offset by ${client.d.getHours() - d.d.getHours()} hours)`
+        var difftime = `(Offset by ${Math.abs(client.d.getHours() - d.d.getHours())} hours)`
     }
     $("#time").text(hrs + min + sec + ' ' + difftime);
 }, 1000);
