@@ -101,6 +101,46 @@
     }
 }
 
+@-webkit-keyframes headerAnimate2 {
+    0%,50% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes headerAnimate2 {
+    0%,50% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@-o-keyframes headerAnimate2 {
+    0%,50% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes headerAnimate2 {
+    0%,50% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -276,11 +316,15 @@ main {
     overflow-x: hidden
 }
 
-.clock {
+.upright {
     position: absolute;
     right: 15px;
     text-align: right;
-    font-size: 1.4vw
+    font-size: 1.4vw;
+    -webkit-animation: 4s headerAnimate2;
+    -moz-animation: 4s headerAnimate2;
+    -o-animation: 4s headerAnimate2;
+    animation: 4s headerAnimate2
 }
 
 .footer {
