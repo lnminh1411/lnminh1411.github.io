@@ -22,17 +22,19 @@ $(window)
             .height(),
             w = $(window)
             .height();
-        if (scroll <= 10) {
-            percent = 10
-            factopac = .35
+        if (scroll <= 74) {
+            percent = 4
         } else {
             percent = (scroll / (h - w)) * 100
-            if (scroll > 10) {
-                factopac = 0
-            }
+        }
+        if (scroll <= 10) {
+            factopac = .35
+        } else {
+            factopac = 0
         }
         $('#progressbar').css('height', `${percent}%`);
         $('.factcontainer').css('opacity', `${factopac}`);
+        console.log(scroll)
     });
 
 $(document)
@@ -45,7 +47,7 @@ $(document)
         }
         loadfacts()
 
-        const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with just 579 lines!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes", "15% coding, 75% debugging, 10% staring into the abyss."]
+        const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with just 636 lines!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes", "15% coding, 75% debugging, 10% staring into the abyss."]
         $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
         if (window.innerHeight > 1232 && (window.innerHeight > window.innerWidth)) {
             alert(`Rotate your devices for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`);
@@ -92,16 +94,13 @@ async function loadstatus() {
         $("#status").text("Not Active")
     }
     $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`)
-    if (statjs.data.active_on_discord_desktop === true || (statjs.data.active_on_discord_desktop === true && statjs.data.active_on_discord_mobile === true)) {
-        if (statjs.data.discord_status === 'online') {
-            $("#status").text("Online")
-        }
+    if ((statjs.data.active_on_discord_desktop === true || (statjs.data.active_on_discord_desktop === true && statjs.data.active_on_discord_mobile === true)) && statjs.data.discord_status === 'online') {
+        $("#status").text("Online")
     }
     if (statjs.data.active_on_discord_desktop === false && statjs.data.active_on_discord_mobile === true && statjs.data.discord_status === 'online') {
         $("#status").text("Online on Mobile")
     }
 }
-
 loadstatus()
 setInterval(function() {
     loadstatus()
