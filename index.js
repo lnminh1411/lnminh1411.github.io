@@ -37,23 +37,6 @@ $(window)
         console.log(scroll)
     });
 
-$(document)
-    .ready(function () {
-        async function loadfacts() {
-            const res = await fetch('./facts.json');
-            const factsjs = await res.json();
-            const random = Math.floor(Math.random() * factsjs.facts.length);
-            $("#fact").text(factsjs.facts[random].fact);
-        }
-        loadfacts()
-
-        const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with just 636 lines!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes", "15% coding, 75% debugging, 10% staring into the abyss."]
-        $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
-        if (window.innerHeight > 1232 && (window.innerHeight > window.innerWidth)) {
-            alert(`Rotate your devices for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`);
-        }
-    });
-
 setInterval(function () {
     const d = spacetime.now('asia/saigon')
     const client = spacetime.now()
@@ -101,6 +84,21 @@ async function loadstatus() {
         $("#status").text("Online on Mobile")
     }
 }
+
+async function loadfacts() {
+    const res = await fetch('./facts.json');
+    const factsjs = await res.json();
+    const random = Math.floor(Math.random() * factsjs.facts.length);
+    $("#fact").text(factsjs.facts[random].fact);
+}
+
+const txtarr = ["A professional in Undefined", "Creating solution for absolutely nothing", "Nothing make sense", "Technically good!", "≈70% bug free!", "Tell your friends about this.", "ReferenceError: header.txt Undefined", "Nice to meet you!", "√-1 love you!", "12345678 is a bad password!", "Have a great day!", "There are no real limits, not even the sky!", "!false is actually true!", "It's not a bug, it's a feature!", "If it works, it works.", 'print("Hello World!")', "Created with just 636 lines!", 'Playing hide and seek with a ";"', "How is this working!?", "Time wasted creating this: A lot", "It's either !Yes or No", "If + else = elif", "What a pain!", "Mobile friendly!", "Perfectly balanced!", "EMOTIONAL DAMAGE!", "It's either !No or Yes", "15% coding, 75% debugging, 10% staring into the abyss."]
+$("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)])
+if (window.innerHeight > 1232 && (window.innerHeight > window.innerWidth)) {
+    alert(`Use landscape mode for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`);
+}
+
+loadfacts()
 loadstatus()
 setInterval(function() {
     loadstatus()
