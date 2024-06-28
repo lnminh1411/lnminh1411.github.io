@@ -431,3 +431,13 @@ h3 {
     width: .6em;
     height: .6em;
 }
+
+.contactitem {
+    font-size: 40px;
+}
+
+@media (max-width:500px) {
+    .contactitem {
+        font-size: 18px;
+    }
+}
