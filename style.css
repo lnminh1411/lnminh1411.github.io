@@ -321,6 +321,14 @@ main {
     max-width: 137px
 }
 
+.art {
+    border-radius:5%;
+    width:7vw;
+    display:block;
+    max-height:137px;
+    max-width:137px;
+}
+
 .spotifyname {
     text-align: left;
     line-height: .4vw;
