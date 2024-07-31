@@ -1,120 +1,195 @@
 <!doctype html>
 <html lang=en>
-  <head>
+
+<head>
     <meta charset=UTF-8>
     <meta name=viewport content="width=device-width,initial-scale=1">
     <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN crossorigin=anonymous>
-    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js integrity=sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL crossorigin=anonymous></script>
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css rel=stylesheet
+        integrity=sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN crossorigin=anonymous>
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js
+        integrity=sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL
+        crossorigin=anonymous></script>
     <link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css rel=stylesheet>
     <title>About me</title>
     <meta name=description content="Basically an about me page">
     <link rel=stylesheet href=style.css>
     <link href=https://unpkg.com/@csstools/normalize.css rel=stylesheet />
     <script src=https://polyfill-fastly.io/v3/polyfill.min.js></script>
-    <script src=https://code.jquery.com/jquery-3.7.1.min.js integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin=anonymous></script>
+    <script src=https://code.jquery.com/jquery-3.7.1.min.js
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin=anonymous></script>
     <script src=https://unpkg.com/spacetime></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>
-      <a href="https://support.google.com/adsense/answer/12654?hl=en">This site requires javascript to be enabled! Enable javascript on your browser or click on this message for support</a>
+        <a href="https://support.google.com/adsense/answer/12654?hl=en">This site requires javascript to be enabled!
+            Enable javascript on your browser or click on this message for support</a>
     </noscript>
     <div id=bg></div>
     <div id=progressbar></div>
-    <div class=upright> Current time in Vietnam (UTC+7): <div id=time></div><div id="superlargedisplay">I'm currently: <span id="statsdot2"></span><span id="status2"></span></div></div>
+    <div class=upright>Current time in Vietnam (UTC+7)
+        <div id=time></div>
+        <div id="superlargedisplay">I'm currently: <span id="statsdot2"></span><span id="status2"></span></div>
+    </div>
     <div class=upleft>
-      <div class="pfp">
-        <img class="pic" src="https://cdn.discordapp.com/avatars/1243939761614356544/443a2f4872c32b317f7d908b1141bd03" alt="Avatar">
-      </div>
-      <div class="nameastat">
-        <p id="myname">Lê Nhật Minh</p>
-        <div id="statsdot"></div>
-        <div id="status"></div>
-      </div>
-      <n class="desktop-display" id="large-display">
-      <div class="songart">
-        <img class="art" alt="song art"> 
-      </div>
-    </n>
-    <span class="desktop-display" id="large-display">
-      <div class="spotifyname">
-        <p id="name"></p>
-        <p id="artist"></p>
-        <p id="timestamp"></p>
-      </div>
-    </span>
+        <div class="pfp">
+            <img class="pic"
+                src="https://cdn.discordapp.com/avatars/1243939761614356544/443a2f4872c32b317f7d908b1141bd03"
+                alt="Avatar">
+        </div>
+        <div class="nameastat">
+            <p id="myname">Lê Nhật Minh</p>
+            <div id="statsdot"></div>
+            <div id="status"></div>
+        </div>
+        <n class="desktop-display" id="large-display">
+            <div class="songart">
+                <img class="art" alt="song art">
+            </div>
+        </n>
+        <span class="desktop-display" id="large-display">
+            <div class="spotifyname">
+                <p id="name"></p>
+                <p id="artist"></p>
+                <p id="timestamp"></p>
+            </div>
+        </span>
     </div>
     <header>
-      <section style="width:100vw">
-        <h1>
-          <svg width=100% height=100%>
-            <rect x=0 y=0 width=100% height=100% style="fill:none"></rect>
-            <text x=50% y=96% text-anchor=middle>LNMinh</text>
-          </svg>
-          <pre id="titletxt">This page isn't working correctly!</pre>
-        </h1>
-      </section>
+        <section style="width:100vw">
+            <h1>
+                <svg width=100% height=100%>
+                    <rect x=0 y=0 width=100% height=100% style="fill:none"></rect>
+                    <text x=50% y=96% text-anchor=middle>LNMinh</text>
+                </svg>
+                <pre id="titletxt">This page isn't working correctly!</pre>
+            </h1>
+        </section>
     </header>
     <a href=https://youtu.be/p7YXXieghto target=_blank style=cursor:not-allowed>
-      <div class=factcontainer>Did you know: <div id=fact style="margin-right:12px">This page isn't working correctly? Check your internet and refresh!</div></div>
+        <div class=factcontainer>Did you know:
+            <div id=fact style="margin-right:12px">This page isn't working correctly? Check your internet and refresh!
+            </div>
+        </div>
     </a>
     <main>
-      <h3 data-aos="fade-in" >Contact me:</h3>
-      <div style=align-items:center;opacity:.8><a href=https://discord.com/users/1243939761614356544 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-discord contactitem"></i>&emsp;</a><a href=https://github.com/lnminh1411/ target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-github contactitem"></i>&emsp;</a><a href=https://www.instagram.com/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-instagram contactitem"></i>&emsp;</a><a href=https://m.me/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-messenger contactitem"></i>&emsp;</a><a href=https://www.facebook.com/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-facebook contactitem"></i>&emsp;</a><a href="mailto:contact@lnminh1411.is-a.dev" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in" class="bi bi-envelope-at contactitem"></i></a></div>
-      <div class=aboutmesection>
-        <h3 data-aos="fade-in" style=font-weight:400>About me:</h3>
-        <a href=https://youtu.be/pGA3WvZdoiE style=cursor:text>
-          <p data-aos="fade-in">Hi there! I'm Nhật Minh (or NMinh for short). I'm currently a 10th grader and a self-taught programmer developing front-end coding skills.I've been building my coding skills since 5th grade (Although having to stop in 8th and 9th grade) and since had have some experience with coding and scripting many languages. Oh yeah, I'm also a Minecraft player in my free time. <br> Wanna contact me? I'm most active on discord, so feel free to reach out to me at any time!</p>
-          <h3 style=font-weight:400 data-aos="fade-in" >Skills:</h3>
+        <h3 data-aos="fade-in">Contact me:</h3>
+        <div style=align-items:center;opacity:.8><a href=https://discord.com/users/1243939761614356544 target=_blank
+                onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in"
+                    class="bi bi-discord contactitem"></i>&emsp;</a><a href=https://github.com/lnminh1411/ target=_blank
+                onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in"
+                    class="bi bi-github contactitem"></i>&emsp;</a><a href=https://www.instagram.com/lenhatminh1411
+                target=_blank onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i
+                    data-aos="fade-in" class="bi bi-instagram contactitem"></i>&emsp;</a><a
+                href=https://m.me/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'"
+                onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in"
+                    class="bi bi-messenger contactitem"></i>&emsp;</a>
+            <a href=https://www.facebook.com/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.3'"
+                onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in"
+                    class="bi bi-facebook contactitem"></i>&emsp;</a><a href="mailto:contact@lnminh1411.is-a.dev"
+                onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='.8'"><i data-aos="fade-in"
+                    class="bi bi-envelope-at contactitem"></i></a>
+        </div>
+        <div class=aboutmesection>
+            <h3 data-aos="fade-in" style=font-weight:400>About me:</h3>
+            <p data-aos="fade-in">Hi there! I'm Nhật Minh (or NMinh for short). I'm currently a 10th grader and a
+                self-taught programmer developing front-end coding skills.I've been building my coding skills since 5th
+                grade (Although having to stop in 8th and 9th grade) and
+                since had have some experience with coding and scripting many languages. Oh yeah, I'm also a Minecraft
+                player in my free time.
+                <br> Wanna contact me? I'm most active on discord, so feel free to reach out to me at any time!
+            </p>
+            <h3 style=font-weight:400 data-aos="fade-in">Skills:</h3>
             <div data-aos="fade-in">
-              <img src="https://shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-              <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="Javascript">
-              <img src="https://shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"> <!--Tavascript lmao-->
-              <img src="https://shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
-              <img src="https://shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML">
-              <img src="https://shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS">
+                <a href="https://www.python.org/"><img
+                        src="https://shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"
+                        alt="Python" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://www.javascript.com/"><img
+                        src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                        alt="Javascript" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://www.typescriptlang.org/"><img
+                        src="https://shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
+                        alt="TypeScript" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://nodejs.org/en"><img
+                        src="https://shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"
+                        alt="Node.js" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://html.com/"><img
+                        src="https://shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                        alt="HTML" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://css3.com/"><img
+                        src="https://shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
+                        alt="CSS" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
             </div>
-          <h3 data-aos="fade-in" style="font-weight:400;">Other stuffs I use:</h3>
-          <div class="stuffs" data-aos="fade-in">
-            <img src="https://shields.io/badge/windows%20terminal-4D4D4D?style=for-the-badge&logo=windows%20terminal&logoColor=white" alt="Windows Terminal">
-            <img src="https://shields.io/badge/GIT_Terminal-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git Terminal">
-            <img src="https://shields.io/badge/Windows_Insider_Canary-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Canary">
-            <img src="https://shields.io/badge/WSL-0a97f5?style=for-the-badge&logo=linux&logoColor=white" alt="WSL">
-            <img src="https://shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu">
-            <img src="https://shields.io/badge/Firefox_Developer-0078D7?style=for-the-badge&logo=Firefox-Browser&logoColor=white" alt="Firefox Developer">
-            <img src="https://shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VSCode">
-            <img src="https://shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white" alt="Visual Studio">
-          </div>
-        <h3 data-aos="fade-in">Some stats:</h3>
-        <p data-aos="fade-in" >(It's not good ngl)</p>
-        </a>
-        <a href="https://github.com/lnminh1411">
-         <div class="desktop-display" data-aos="fade-in">
-            <img style="width: 85vw;" src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
-          </div>
-          <div class="mobile-display" data-aos="fade-in">
-            <img style="width: 85vw;" src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&column=4&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
-          </div>
-          <img data-aos="fade-in" class="stats" src="https://github-readme-stats.vercel.app/api?username=lnminh1411&show_icons=true&theme=transparent&hide_border=true" />
-          <img data-aos="fade-in" class="lang" src="https://github-readme-stats.vercel.app/api/top-langs?username=lnminh1411&layout=compact&hide_border=true&langs_count=8&card_width=320&theme=transparent" />
-          <img data-aos="fade-in" class="streak" src="https://github-readme-streak-stats.herokuapp.com/?user=lnminh1411&theme=transparent&hide_border=true">
-          <div data-aos="fade-in" class="desktop-display">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lnminh1411&theme=transparent">
-            <img class="prodtime" src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lnminh1411&utcOffset=+7&theme=transparent">
-          </div>
-        </a>
-      </div>
+            <h3 data-aos="fade-in" style="font-weight:400;">Other stuffs I use:</h3>
+            <div class="stuffs" data-aos="fade-in">
+                <a href="https://github.com/microsoft/terminal"><img
+                        src="https://shields.io/badge/windows%20terminal-4D4D4D?style=for-the-badge&logo=windows%20terminal&logoColor=white"
+                        alt="Windows Terminal" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://git-scm.com/"><img
+                        src="https://shields.io/badge/GIT_Terminal-E44C30?style=for-the-badge&logo=git&logoColor=white"
+                        alt="Git Terminal" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://aka.ms/CanaryChannelLatest"><img
+                        src="https://shields.io/badge/Windows_Insider_Canary-0078D6?style=for-the-badge&logo=windows&logoColor=white"
+                        alt="Windows Canary" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://learn.microsoft.com/en-us/windows/wsl/"><img
+                        src="https://shields.io/badge/WSL-0a97f5?style=for-the-badge&logo=linux&logoColor=white"
+                        alt="WSL" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://ubuntu.com/"><img
+                        src="https://shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"
+                        alt="Ubuntu" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://www.mozilla.org/vi/firefox/developer/"><img
+                        src="https://shields.io/badge/Firefox_Developer-0078D7?style=for-the-badge&logo=Firefox-Browser&logoColor=white"
+                        alt="Firefox Developer" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://code.visualstudio.com/insiders/"><img
+                        src="https://shields.io/badge/Visual_Studio_Code_Insider-22B39B?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"
+                        alt="VSCode Insider" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+                <a href="https://visualstudio.microsoft.com/"><img
+                        src="https://shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white"
+                        alt="Visual Studio" onMouseOver="this.style.opacity='.3'"
+                        onMouseOut="this.style.opacity='1'"></a>
+            </div>
+            <h3 data-aos="fade-in">Some stats:</h3>
+            <p data-aos="fade-in">(It's not good ngl)</p>
+            <a href="https://github.com/lnminh1411">
+                <div class="desktop-display" data-aos="fade-in">
+                    <img style="width: 85vw;"
+                        src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
+                </div>
+                <div class="mobile-display" data-aos="fade-in">
+                    <img style="width: 85vw;"
+                        src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&column=4&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
+                </div>
+                <img data-aos="fade-in" class="stats"
+                    src="https://github-readme-stats.vercel.app/api?username=lnminh1411&show_icons=true&theme=transparent&hide_border=true" />
+                <img data-aos="fade-in" class="lang"
+                    src="https://github-readme-stats.vercel.app/api/top-langs?username=lnminh1411&layout=compact&hide_border=true&langs_count=8&card_width=320&theme=transparent" />
+                <img data-aos="fade-in" class="streak"
+                    src="https://github-readme-streak-stats.herokuapp.com/?user=lnminh1411&theme=transparent&hide_border=true">
+                <div data-aos="fade-in" class="desktop-display">
+                    <img
+                        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lnminh1411&theme=transparent">
+                    <img class="prodtime"
+                        src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lnminh1411&utcOffset=+7&theme=transparent">
+                </div>
+            </a>
+        </div>
     </main>
     <footer>
-      <div style="background:rgba(0, 0, 0, 0.2);float:none;margin:0 auto;padding-bottom:1px">
-        <a href="https://github.com/lnminh1411/lnminh1411.github.io"><h2 class="footer">NMinh © 2024 | All Rights Reserved</h2></a>
-      </div>
+        <a href="https://github.com/lnminh1411/lnminh1411.github.io">
+            <footertext>NMinh © 2024 | All Rights Reserved</footertext>
+        </a>
     </footer>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
-  </body>
-  <script src=index.js></script>
+</body>
+<script src=index.js></script> 
 </html>
