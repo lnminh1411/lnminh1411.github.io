@@ -8,6 +8,10 @@ $(window).on("scroll", function () {
   $(".factcontainer").css("opacity", `${factopac}`);
 });
 
+function rickroll() {
+  window.open("https://youtu.be/p7YXXieghto", '_blank');
+}
+
 setInterval(function () {
   const d = spacetime.now("UTC+7");
   const client = spacetime.now();
@@ -189,14 +193,12 @@ async function loadfacts() {
   $("#fact").text(factsjs.facts[random].fact);
 }
 
-const txtarr = [
-  "A professional in Undefined",
+const txtarr = [ 
   "Creating solution for absolutely nothing",
   "Nothing make sense",
   "Technically good!",
   "≈70% bug free!",
-  "Tell your friends about this.",
-  "ReferenceError: header.txt Undefined",
+  "Tell your friends about this.", 
   "Nice to meet you!",
   "√-1 love you!",
   "12345678 is a bad password!",
@@ -205,7 +207,7 @@ const txtarr = [
   "!false is actually true!",
   "It's not a bug, it's a feature!",
   "If it works, it works.",
-  'print("Hello World!")',
+  'helloworld("print")',
   "Created with 1372 lines of code!",
   'Playing hide and seek with a ";"',
   "How is this working!?",
@@ -215,11 +217,12 @@ const txtarr = [
   "What a pain!",
   "Mobile friendly!",
   "Perfectly balanced!",
-  "EMOTIONAL DAMAGE!",
-  "It's either !No or Yes",
-  "15% coding, 75% debugging, 10% staring into the abyss.",
-  "Built with galvanized square steel!",
-  "Built with eco-friendly wood veneer!",
+  "EMOTIONAL DAMAGE!", 
+  "Reinforced with galvanized square steel!", 
+  "＼（〇_ｏ）／",
+  "（づ￣3￣）づ╭❤️～",
+  "¯\_(ツ)_/¯",
+  "5!=120"
 ];
 $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]);
 if (window.innerHeight > 1232 && window.innerHeight > window.innerWidth) {

@@ -251,7 +251,7 @@ main {
 .upleft,
 .upright {
   position: absolute;
-  text-align: center; 
+  text-align: center;
   -webkit-animation: 4s headerAnimate2;
   animation: 4s headerAnimate2;
 }
@@ -276,13 +276,13 @@ main {
   grid-template-rows: auto auto;
   gap: 5px;
   max-width: 60vw;
-  max-height: 267px; 
+  max-height: 267px;
   font-size: larger;
 }
 
 @media (max-width: 1490px) {
   .upleft {
-    font-size: x-large
+    font-size: x-large;
   }
 }
 
@@ -423,7 +423,7 @@ main {
   grid-area: 2/2/3/3;
   display: block;
   overflow: hidden;
-  white-space: nowrap; 
+  white-space: nowrap;
   min-width: 0;
   max-width: 410px;
 }
@@ -553,6 +553,8 @@ h3 {
   margin-right: 12px;
   margin-left: 6px;
   bottom: 2px;
+  max-width: 50%;
+  cursor: pointer;
 }
 
 .mobile-display {
@@ -675,7 +677,7 @@ footer a.copyright {
 }
 
 footer a.sourcecode {
-  right: 12px;
+  right: 115px;
 }
 
 #bg {
@@ -746,4 +748,13 @@ footer a.sourcecode {
     -16vw 17vh 0 0#fff, 18vw 27vh 0 1px #fff, -8vw -10vh 1px 1px #fff;
   -webkit-animation: zoom 20s alternate infinite;
   animation: zoom 20s alternate infinite;
+}
+
+#sleeper {
+  width: 100px;
+  height: 56px;
+  position: fixed;
+  bottom: 0;
+  right: 12px;
+  cursor: not-allowed;
 }
