@@ -62,7 +62,17 @@ setInterval(function () {
     midday = "PM";
   }
   $("#time").text(
-    hrs + min + sec + " || " + hrs12 + min + sec + " " + midday + "  " + difftime
+    hrs +
+      min +
+      sec +
+      " || " +
+      hrs12 +
+      min +
+      sec +
+      " " +
+      midday +
+      "  " +
+      difftime
   );
 }, 1000);
 
@@ -80,54 +90,54 @@ async function loadstatus() {
   const statjs = await res.json();
   if (statjs.data.discord_status === "dnd") {
     if (d.d.getHours() >= 22) {
-      $("#status").text("Sleeping"); 
+      $("#status").text("Sleeping");
     } else {
-      $("#status").text("Busy / Not Available"); 
+      $("#status").text("Busy / Not Available");
     }
   }
   if (statjs.data.discord_status === "offline") {
     if (d.d.getHours() >= 22) {
-      $("#status").text("Sleeping"); 
+      $("#status").text("Sleeping");
     } else {
-      $("#status").text("Offline"); 
+      $("#status").text("Offline");
     }
   }
   if (statjs.data.discord_status === "idle") {
     if (d.d.getHours() >= 22) {
-      $("#status").text("Sleeping"); 
+      $("#status").text("Sleeping");
     } else {
-      $("#status").text("Not Active"); 
+      $("#status").text("Not Active");
     }
   }
-  $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`); 
+  $("#statsdot").css("background", `${Color[statjs.data.discord_status]}`);
   if (
     statjs.data.active_on_discord_desktop === true &&
     statjs.data.discord_status === "online"
   ) {
-    $("#status").text("Online"); 
+    $("#status").text("Online");
   }
   if (
     statjs.data.active_on_discord_desktop === false &&
     statjs.data.active_on_discord_mobile === true &&
     statjs.data.discord_status === "online"
   ) {
-    $("#status").text("Online on Mobile"); 
+    $("#status").text("Online on Mobile");
   }
   if (
     statjs.data.listening_to_spotify === true &&
     statjs.data.discord_status === "online"
   ) {
     if (
-      statjs.data.active_on_discord_desktop === true && 
+      statjs.data.active_on_discord_desktop === true &&
       statjs.data.listening_to_spotify === true
     ) {
-      $("#status").text("Online & Listening to Spotify"); 
+      $("#status").text("Online & Listening to Spotify");
     }
     if (
-      statjs.data.active_on_discord_desktop === false && 
+      statjs.data.active_on_discord_desktop === false &&
       statjs.data.discord_status === "online"
     ) {
-      $("#status").text("Listening to Spotify"); 
+      $("#status").text("Listening to Spotify");
     }
     $(".spotifyname").css("grid-area", "2 / 2 / 3 / 4");
     $(".songart").css("grid-area", "2 / 1 / 3 / 2");
@@ -155,7 +165,11 @@ async function loadspotify() {
     $("#artist").text(`${json.data.spotify.artist}`);
     $(".nameastat").css("padding-right", "2vw");
     const d = spacetime.now("asia/saigon");
-    const progress = ((d.epoch - json.data.spotify.timestamps.start) / (json.data.spotify.timestamps.end - json.data.spotify.timestamps.start)) * 100
+    const progress =
+      ((d.epoch - json.data.spotify.timestamps.start) /
+        (json.data.spotify.timestamps.end -
+          json.data.spotify.timestamps.start)) *
+      100;
     const lengthsec = (
       ((json.data.spotify.timestamps.end - json.data.spotify.timestamps.start) %
         60000) /
@@ -193,23 +207,18 @@ async function loadspotify() {
       lengthmintimed = lengthmin + 1;
     } else {
       lengthmintimed = lengthmin;
-    } 
-    if (lengthmin >= 100) { 
-      $("#timestampleft").text(`${lengthmintimed}m`)
-    }else{ 
-      $("#timestampleft").text(`${lengthmintimed}:${lengthsectimed}`)
+    }
+    if (lengthmin >= 100) {
+      $("#timestampleft").text(`${lengthmintimed}m`);
+    } else {
+      $("#timestampleft").text(`${lengthmintimed}:${lengthsectimed}`);
     }
     if (currentmin >= 100) {
-      $("#timestamp").text(
-        `${currentmintimed}m`
-      )
-    }else{
-      $("#timestamp").text(
-        `${currentmintimed}:${currentsectimed}`
-      ) 
+      $("#timestamp").text(`${currentmintimed}m`);
+    } else {
+      $("#timestamp").text(`${currentmintimed}:${currentsectimed}`);
     }
-    $("#songprogress").css("width", `${progress}%`)
-    console.log(progress + '%')
+    $("#songprogress").css("width", `${progress}%`);
   } else {
     $(".nameastat").css("padding-right", "");
   }
@@ -239,7 +248,7 @@ const txtarr = [
   "It's not a bug, it's a feature!",
   "If it works, it works.",
   'print("Hello World!")',
-  "Created with 1108 lines of code!",
+  "Created with 1372 lines of code!",
   'Playing hide and seek with a ";"',
   "How is this working!?",
   "Time wasted creating this: A lot",
@@ -265,7 +274,11 @@ loadfacts();
 loadstatus();
 setInterval(function () {
   loadstatus();
+  console.log(
+    "%cMate, what are you doing here? Get out and don't paste anything here! (Unless ofc you know what you're doing, in that case, don't blame me if anything happen :) )",
+    "color:cyan; font-size:25px"
+  );
 }, 5000);
 setInterval(function () {
   loadspotify();
-}, 1000); 
+}, 1000);
