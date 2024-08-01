@@ -1,20 +1,4 @@
-(window.setScroll = () =>
-  document.body.style.setProperty("--yval", scrollY / 2 / innerHeight))();
-["scroll", "resize"].forEach((i) => addEventListener(i, setScroll));
-let bg = document.querySelector("#bg");
-addEventListener("touchstart", () => bg.style.setProperty("--times", "0"));
-addEventListener("mousemove", ({ clientX, clientY }) => {
-  bg.style.setProperty(
-    "--x",
-    `${(90 * (clientX - innerWidth / 2)) / innerWidth}px`
-  );
-  bg.style.setProperty(
-    "--y",
-    `${(90 * (clientY - innerHeight / 2)) / innerHeight}px`
-  );
-});
-
-$(window).scroll(function () {
+$(window).on("scroll", function () {
   let scroll = $(window).scrollTop(),
     h = $(document).height(),
     w = $(window).height();
@@ -27,40 +11,21 @@ $(window).scroll(function () {
 setInterval(function () {
   const d = spacetime.now("UTC+7");
   const client = spacetime.now();
-  if (d.d.getHours() <= 9) {
-    var hrs = "0" + d.d.getHours() + ":";
-  } else {
-    var hrs = d.d.getHours() + ":";
-  }
-  if (d.d.getMinutes() <= 9) {
-    var min = "0" + d.d.getMinutes() + ":";
-  } else {
-    var min = d.d.getMinutes() + ":";
-  }
-  if (d.d.getSeconds() <= 9) {
-    var sec = "0" + d.d.getSeconds();
-  } else {
-    var sec = d.d.getSeconds();
-  }
-  if (d.d.getHours() - client.d.getHours() === 0) {
-    var difftime = "(Same time)";
-  } else {
-    var difftime = `(Offset by ${Math.abs(
-      client.d.getHours() - d.d.getHours()
-    )} hours)`;
-  }
-  if (d.d.getHours() <= 12) {
-    if (d.d.getHours() == 12) {
-      hrs12 = d.d.getHours() + ":";
-      midday = "PM";
-    } else {
-      hrs12 = d.d.getHours() + ":";
-      midday = "AM";
-    }
-  } else {
-    hrs12 = d.d.getHours() - 12 + ":";
-    midday = "PM";
-  }
+  let hrs = (d.d.getHours() <= 9 ? "0" : "") + d.d.getHours() + ":";
+  let min = (d.d.getMinutes() <= 9 ? "0" : "") + d.d.getMinutes() + ":";
+  let sec = (d.d.getSeconds() <= 9 ? "0" : "") + d.d.getSeconds();
+  let difftime =
+    d.d.getHours() - client.d.getHours() === 0
+      ? "(Same time)"
+      : `(Offset by ${Math.abs(client.d.getHours() - d.d.getHours())} hours)`;
+  let hrs12 =
+    (d.d.getHours() <= 12
+      ? d.d.getHours() === 12
+        ? d.d.getHours()
+        : d.d.getHours()
+      : d.d.getHours() - 12) + ":";
+  let midday =
+    d.d.getHours() <= 12 ? (d.d.getHours() === 12 ? "PM" : "AM") : "PM";
   $("#time").text(
     hrs +
       min +
@@ -127,18 +92,7 @@ async function loadstatus() {
     statjs.data.listening_to_spotify === true &&
     statjs.data.discord_status === "online"
   ) {
-    if (
-      statjs.data.active_on_discord_desktop === true &&
-      statjs.data.listening_to_spotify === true
-    ) {
-      $("#status").text("Online & Listening to Spotify");
-    }
-    if (
-      statjs.data.active_on_discord_desktop === false &&
-      statjs.data.discord_status === "online"
-    ) {
-      $("#status").text("Listening to Spotify");
-    }
+    $("#status").text("Listening to Spotify");
     $(".spotifyname").css("grid-area", "2 / 2 / 3 / 4");
     $(".songart").css("grid-area", "2 / 1 / 3 / 2");
     $(".songart").css("display", "block");
@@ -213,12 +167,16 @@ async function loadspotify() {
     } else {
       $("#timestampleft").text(`${lengthmintimed}:${lengthsectimed}`);
     }
-    if (currentmin >= 100) {
-      $("#timestamp").text(`${currentmintimed}m`);
+    if (d.epoch > json.data.spotify.timestamps.end) {
+      $("#timestamp").text(`--`);
     } else {
-      $("#timestamp").text(`${currentmintimed}:${currentsectimed}`);
+      if (currentmin >= 100) {
+        $("#timestamp").text(`${currentmintimed}m`);
+      } else {
+        $("#timestamp").text(`${currentmintimed}:${currentsectimed}`);
+      }
+      $("#songprogress").css("width", `${progress}%`);
     }
-    $("#songprogress").css("width", `${progress}%`);
   } else {
     $(".nameastat").css("padding-right", "");
   }
@@ -266,7 +224,13 @@ const txtarr = [
 $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]);
 if (window.innerHeight > 1232 && window.innerHeight > window.innerWidth) {
   alert(
-    `Use landscape mode for better experience! \nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`
+    `Use landscape mode for better experience!\nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!`
+  );
+}
+
+if (window.innerWidth <= 527) {
+  alert(
+    `Get a better phone! Haiyaa I can't code stuffs for such a small phone!\nMua điện thoại mới đi! Cũ quá rồi bạn ơi:) mình ko lập trình cho điện thoại này được!\n\nIf continue, visual glitches are expected!\nNếu tiếp tục truy cập thì sẽ nhìn thấy vài lỗi "nho nhỏ" thôi:)`
   );
 }
 
@@ -281,4 +245,4 @@ setInterval(function () {
 }, 5000);
 setInterval(function () {
   loadspotify();
-}, 1000);
+}, 500);
