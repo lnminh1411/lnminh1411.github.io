@@ -3,9 +3,10 @@ $(window).on("scroll", function () {
     h = $(document).height(),
     w = $(window).height();
   let percent = scroll <= 74 ? 4 : (scroll / (h - w)) * 100;
-  let factopac = scroll <= 10 ? 0.35 : 0;
+  let scrollopac = scroll <= 10 ? 0.35 : 0;
   $("#progressbar").css("height", `${percent}%`);
-  $(".factcontainer").css("opacity", `${factopac}`);
+  $(".factcontainer").css("opacity", `${scrollopac}`);
+  $("#arrow").css("opacity", `${scrollopac}`);
 });
 
 function rickroll() {

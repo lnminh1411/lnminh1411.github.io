@@ -111,6 +111,7 @@ html {
   font-size: 155.5%;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
@@ -199,7 +200,7 @@ svg text {
   letter-spacing: 10px;
   stroke: #9d9d9d;
   font-size: 173px;
-  font-weight: 900;
+  font-weight: 600;
   stroke-width: 1;
   -webkit-animation: 4s textAnimate;
   animation: 4s textAnimate;
@@ -212,6 +213,7 @@ header section pre {
   -webkit-animation: 8s headerAnimate;
   animation: 8s headerAnimate;
   opacity: 0.35;
+  margin-bottom: 0.35rem;
 }
 
 header section div {
@@ -550,10 +552,9 @@ h3 {
   text-align: left;
   -webkit-animation: 2s headerAnimate;
   animation: 2s headerAnimate;
-  margin-right: 12px;
   margin-left: 6px;
   bottom: 2px;
-  max-width: 50%;
+  max-width: 45%;
   cursor: pointer;
 }
 
@@ -746,8 +747,8 @@ footer a.sourcecode {
     -38vw -46vh 1px 1px #fff, 49vw -6vh 1px 1px #fff, -28vw 18vh 1px 1px #fff,
     10vw -24vh 0 1px #fff, -5vw -11vh 1px 1px #fff, 33vw -8vh 1px 0#fff,
     -16vw 17vh 0 0#fff, 18vw 27vh 0 1px #fff, -8vw -10vh 1px 1px #fff;
-  -webkit-animation: zoom 20s alternate infinite;
-  animation: zoom 20s alternate infinite;
+  -webkit-animation: zoom 15s alternate infinite;
+  animation: zoom 15s alternate infinite;
 }
 
 #sleeper {
@@ -757,4 +758,55 @@ footer a.sourcecode {
   bottom: 0;
   right: 12px;
   cursor: not-allowed;
+}
+
+#arrow {
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+#arrow svg {
+  opacity: 0.35;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  padding: 0 15px;
+  width: 80px;
+  height: 110px;
+  color: #fff;
+  animation: MoveUpDown 3s infinite, headerAnimate 2s;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-bottom: 15px;
+  }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
