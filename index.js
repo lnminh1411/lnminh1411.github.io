@@ -2,15 +2,22 @@ $(window).on("scroll", function () {
   let scroll = $(window).scrollTop(),
     h = $(document).height(),
     w = $(window).height();
-  let percent = scroll <= 74 ? 4 : (scroll / (h - w)) * 100;
+  let percent = (scroll / (h - w)) * 100;
   let scrollopac = scroll <= 10 ? 0.35 : 0;
   $("#progressbar").css("height", `${percent}%`);
   $(".factcontainer").css("opacity", `${scrollopac}`);
   $("#arrow").css("opacity", `${scrollopac}`);
+  if (scroll >= 10) {
+    $(".scrolllink").attr("href", "javascript:void(0)");
+    $(".scrolllink").attr("title", "");
+  } else {
+    $(".scrolllink").attr("href", "#aboutmesectionscroll");
+    $(".scrolllink").attr("title", "Scroll down!");
+  }
 });
 
 function rickroll() {
-  window.open("https://youtu.be/p7YXXieghto", '_blank');
+  window.open("https://youtu.be/p7YXXieghto", "_blank");
 }
 
 setInterval(function () {
@@ -194,12 +201,12 @@ async function loadfacts() {
   $("#fact").text(factsjs.facts[random].fact);
 }
 
-const txtarr = [ 
+const txtarr = [
   "Creating solution for absolutely nothing",
   "Nothing make sense",
   "Technically good!",
   "≈70% bug free!",
-  "Tell your friends about this.", 
+  "Tell your friends about this.",
   "Nice to meet you!",
   "√-1 love you!",
   "12345678 is a bad password!",
@@ -208,8 +215,7 @@ const txtarr = [
   "!false is actually true!",
   "It's not a bug, it's a feature!",
   "If it works, it works.",
-  'helloworld("print")',
-  "Created with 1372 lines of code!",
+  'helloworld("print")', 
   'Playing hide and seek with a ";"',
   "How is this working!?",
   "Time wasted creating this: A lot",
@@ -218,12 +224,12 @@ const txtarr = [
   "What a pain!",
   "Mobile friendly!",
   "Perfectly balanced!",
-  "EMOTIONAL DAMAGE!", 
-  "Reinforced with galvanized square steel!", 
+  "EMOTIONAL DAMAGE!",
+  "Reinforced with galvanized square steel!",
   "＼（〇_ｏ）／",
   "（づ￣3￣）づ╭❤️～",
-  "¯\_(ツ)_/¯",
-  "5!=120"
+  "¯_(ツ)_/¯",
+  "5!=120",
 ];
 $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]);
 if (window.innerHeight > 1232 && window.innerHeight > window.innerWidth) {

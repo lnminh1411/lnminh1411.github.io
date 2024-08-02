@@ -763,9 +763,10 @@ footer a.sourcecode {
 #arrow {
   display: flex;
   position: fixed;
-  right: 0;
+  max-width: 80px;
+  right: 50%;
   bottom: 0;
-  left: 0;
+  left: 50%;
   justify-content: center;
   transition: opacity 0.2s;
 }
@@ -789,24 +790,4 @@ footer a.sourcecode {
   50% {
     margin-bottom: 15px;
   }
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
+} 
