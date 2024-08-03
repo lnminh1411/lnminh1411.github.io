@@ -2,10 +2,9 @@ $(window).on("scroll", function () {
   let scroll = $(window).scrollTop(),
     h = $(document).height(),
     w = $(window).height();
-  let percent = (scroll / (h - w)) * 100;
+  let percent = (scroll / (h - w)) * 100 < 4 ? 4 : (scroll / (h - w)) * 100;
   let scrollopac = scroll <= 10 ? 0.35 : 0;
   $("#progressbar").css("height", `${percent}%`);
-  $(".factcontainer").css("opacity", `${scrollopac}`);
   $("#arrow").css("opacity", `${scrollopac}`);
   if (scroll >= 10) {
     $(".scrolllink").attr("href", "javascript:void(0)");
@@ -194,13 +193,6 @@ async function loadspotify() {
   }
 }
 
-async function loadfacts() {
-  const res = await fetch("./facts.json");
-  const factsjs = await res.json();
-  const random = Math.floor(Math.random() * factsjs.facts.length);
-  $("#fact").text(factsjs.facts[random].fact);
-}
-
 const txtarr = [
   "Creating solution for absolutely nothing",
   "Nothing make sense",
@@ -215,7 +207,7 @@ const txtarr = [
   "!false is actually true!",
   "It's not a bug, it's a feature!",
   "If it works, it works.",
-  'helloworld("print")', 
+  'helloworld("print")',
   'Playing hide and seek with a ";"',
   "How is this working!?",
   "Time wasted creating this: A lot",
@@ -244,7 +236,6 @@ if (window.innerWidth <= 527) {
   );
 }
 
-loadfacts();
 loadstatus();
 setInterval(function () {
   loadstatus();

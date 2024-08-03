@@ -204,7 +204,6 @@ svg text {
   stroke-width: 1;
   -webkit-animation: 4s textAnimate;
   animation: 4s textAnimate;
-  margin-top: 50%;
 }
 
 header section pre {
@@ -545,19 +544,6 @@ h3 {
   opacity: 0.7;
 }
 
-.factcontainer {
-  font-size: small;
-  opacity: 0.35;
-  position: absolute;
-  text-align: left;
-  -webkit-animation: 2s headerAnimate;
-  animation: 2s headerAnimate;
-  margin-left: 6px;
-  bottom: 2px;
-  max-width: 45%;
-  cursor: pointer;
-}
-
 .mobile-display {
   display: none;
 }
@@ -790,4 +776,4 @@ footer a.sourcecode {
   50% {
     margin-bottom: 15px;
   }
-} 
+}
