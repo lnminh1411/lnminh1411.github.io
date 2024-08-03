@@ -19,6 +19,99 @@ function rickroll() {
   window.open("https://youtu.be/p7YXXieghto", "_blank");
 }
 
+function loadtooltip() {
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  );
+}
+
+let sound = new Audio("./Expendable.mp3");
+sound.addEventListener(
+  "ended",
+  function () {
+    this.currentTime = 0;
+    this.play();
+  },
+  false
+);
+let soundplayed = false;
+let soundtoggle = false;
+function togglesound() {
+  if (soundplayed == false) {
+    sound.play();
+    sound.volume = 0.2;
+    soundtoggle = true;
+    soundplayed = true;
+  } else {
+    if (soundtoggle == true) {
+      sound.volume = 0.0;
+    } else {
+      sound.volume = 0.2;
+    }
+    soundtoggle = !soundtoggle;
+  }
+}
+
+let angermeter = 1;
+function bang() {
+  let bang = new Audio("./flashbang.mp3");
+  bang.play();
+  $(".flashbang").css("display", "block");
+  $(".flashbang").css("animation", "flash 7s");
+}
+function flashbang() {
+  if (angermeter == 1) {
+    bang();
+    setTimeout(function () {
+      $(".flashbang").css("display", "none");
+      $(".lightmode").attr("data-bs-title", "Haven't learnt your lesson huh?");
+      loadtooltip();
+      angermeter = 2;
+    }, 7000);
+  }
+  if (angermeter == 2) {
+    bang();
+    setTimeout(function () {
+      $(".flashbang").css("display", "none");
+      $(".lightmode").attr("data-bs-title", "Really?");
+      loadtooltip();
+      angermeter = 3;
+    }, 7000);
+  }
+  if (angermeter == 3) {
+    bang();
+    setTimeout(function () {
+      $(".flashbang").css("display", "none");
+      $(".lightmode").attr("data-bs-title", "Stop it!");
+      loadtooltip();
+      angermeter = 4;
+    }, 7000);
+  }
+  if (angermeter == 4) {
+    bang();
+    setTimeout(function () {
+      $(".flashbang").css("display", "none");
+      $(".lightmode").attr("data-bs-title", "Fine have your light mode...");
+      loadtooltip();
+      angermeter = 5;
+    }, 7000);
+  }
+  if (angermeter == 5) {
+    bang();
+    setTimeout(function () {
+      $(".flashbang").css("display", "none");
+      $(".lightmode").attr("data-bs-title", "Lights attract bugs!");
+      loadtooltip();
+      rickroll();
+      $("#change").attr("class", "bi bi-ban");
+      $("#change").attr("onclick", "rickroll()");
+    }, 2000);
+  }
+}
+
 setInterval(function () {
   const d = spacetime.now("UTC+7");
   const client = spacetime.now();
@@ -30,11 +123,22 @@ setInterval(function () {
       ? "(Same time)"
       : `(Offset by ${Math.abs(client.d.getHours() - d.d.getHours())} hours)`;
   let hrs12 =
-    (d.d.getHours() <= 12
+    ((d.d.getHours() <= 12
       ? d.d.getHours() === 12
         ? d.d.getHours()
         : d.d.getHours()
-      : d.d.getHours() - 12) + ":";
+      : d.d.getHours()) -
+      12 <=
+    9
+      ? "0"
+      : "") +
+    ((d.d.getHours() <= 12
+      ? d.d.getHours() === 12
+        ? d.d.getHours()
+        : d.d.getHours()
+      : d.d.getHours()) -
+      12) +
+    ":";
   let midday =
     d.d.getHours() <= 12 ? (d.d.getHours() === 12 ? "PM" : "AM") : "PM";
   $("#time").text(
@@ -220,7 +324,7 @@ const txtarr = [
   "Reinforced with galvanized square steel!",
   "＼（〇_ｏ）／",
   "（づ￣3￣）づ╭❤️～",
-  "¯_(ツ)_/¯",
+  "¯\\_(ツ)_/¯",
   "5!=120",
 ];
 $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]);
@@ -236,6 +340,7 @@ if (window.innerWidth <= 527) {
   );
 }
 
+loadtooltip();
 loadstatus();
 setInterval(function () {
   loadstatus();
