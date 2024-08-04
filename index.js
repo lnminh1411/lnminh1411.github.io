@@ -1,3 +1,7 @@
+//Before you read this code:
+//Don't waste your time trying to understand it.
+//It's not worth it!
+
 function rickroll() {
   window.open("https://youtu.be/p7YXXieghto", "_blank");
 }
@@ -84,7 +88,7 @@ async function loadstatus() {
       a.data.active_on_discord_mobile;
   $("#status").text(l ? i.mobile : i[n]),
     $("#statsdot").css("background", e[n]),
-    a.data.listening_to_spotify
+    a.data.listening_to_spotify && "online" === n
       ? ($("#status").text(i.spotify),
         $(".spotifyname").css({
           "grid-area": "2 / 2 / 3 / 4",
