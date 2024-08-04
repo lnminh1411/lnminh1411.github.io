@@ -483,8 +483,8 @@ main {
   border-radius: 10px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 5px fit-content(410px);
-  grid-template-columns: auto fit-content(410px);
+  -ms-grid-columns: auto 5px fit-content(420px);
+  grid-template-columns: auto fit-content(420px);
   -ms-grid-rows: auto 5px auto;
   grid-template-rows: auto auto;
   gap: 5px;
@@ -642,9 +642,8 @@ main {
   grid-area: 2/2/3/3;
   display: block;
   overflow: hidden;
-  white-space: nowrap;
-  min-width: 0;
-  max-width: 410px;
+  white-space: nowrap; 
+  max-width: 330px;
 }
 
 .songart {
@@ -662,8 +661,8 @@ main {
   border-radius: 5%;
   width: 7vw;
   display: block;
-  max-height: 137px;
-  max-width: 137px;
+  max-height: 130px;
+  max-width: 130px;
 }
 
 .spotifyname {

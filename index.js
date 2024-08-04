@@ -45,7 +45,7 @@ function flashbang() {
           let t = {
             1: "Haven't learnt your lesson huh?",
             2: "Really?",
-            3: "Stop it!",
+            3: "Damn.. Stop it!",
             4: "Fine have your Light mode...",
           };
           $(".lightmode").attr("data-bs-title", t[angermeter]),
@@ -56,8 +56,12 @@ function flashbang() {
     case 5:
       bang(),
         setTimeout(function () {
-          $(".flashbang").css("display", "none"),
-            $(".lightmode").attr("data-bs-title", "Lights attract bugs!"),
+          $(".flashbang, #sleeper").css("display", "none"),
+            $("body").css("background", "#aaa");
+          $("#titletxt")
+            .text("Is this enough light for you?")
+            .css({"color": "#000", "opacity": "1"});
+          $(".lightmode").attr("data-bs-title", "Protect your eyes!"),
             loadtooltip(),
             rickroll(),
             $("#change")
@@ -94,8 +98,8 @@ async function loadstatus() {
           "grid-area": "2 / 2 / 3 / 4",
           display: "block",
         }),
-        $(".songart").css({ "grid-area": "2 / 1 / 3 / 2", display: "block" }))
-      : $(".spotifyname, .songart").css({ "grid-area": "", display: "none" });
+        $(".songart").css({ "grid-area": "2 / 1 / 3 / 2", "display": "block" }))
+      : $(".spotifyname, .songart").css({ "grid-area": "", "display": "none" });
 }
 
 async function loadspotify() {
@@ -198,7 +202,13 @@ const txtarr = [
   "（づ￣3￣）づ╭❤️～",
   "¯\\_(ツ)_/¯",
   "5!=120",
-];
+]; 
+
+$("body").scrollHeight > $("body").clientHeight ?
+  $("#progressbar").css("display", "block") : $("#progressbar").css("display", "none")
+
+console.log($("body").scrollHeight)
+console.log($("body").clientHeight)
 
 $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
   window.innerHeight > 1232 &&
@@ -209,7 +219,7 @@ $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
   window.innerWidth <= 527 &&
     alert(
       'Get a better phone! Haiyaa I can\'t code stuffs for such a small phone!\nMua điện thoại mới đi! Cũ quá rồi bạn ơi:) mình ko lập trình cho điện thoại này được!\n\nIf continue, visual glitches are expected!\nNếu tiếp tục truy cập thì sẽ nhìn thấy vài lỗi "nho nhỏ" thôi:)'
-    ),
+    ), 
   loadtooltip(),
   loadstatus(),
   setInterval(function () {
