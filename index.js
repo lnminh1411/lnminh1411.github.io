@@ -1,7 +1,3 @@
-//Before you read this code:
-//Don't waste your time trying to understand it.
-//It's not worth it!
-
 function rickroll() {
   window.open("https://youtu.be/p7YXXieghto", "_blank");
 }
@@ -57,11 +53,11 @@ function flashbang() {
       bang(),
         setTimeout(function () {
           $(".flashbang, #sleeper").css("display", "none"),
-            $("body").css("background", "#aaa");
-          $("#titletxt")
-            .text("Is this enough light for you?")
-            .css({"color": "#000", "opacity": "1"});
-          $(".lightmode").attr("data-bs-title", "Protect your eyes!"),
+            $("body").css("background", "#aaa"),
+            $("#titletxt")
+              .text("Is this enough light for you?")
+              .css({ color: "#000", opacity: "1" }),
+            $(".lightmode").attr("data-bs-title", "Protect your eyes!"),
             loadtooltip(),
             rickroll(),
             $("#change")
@@ -71,50 +67,64 @@ function flashbang() {
   }
 }
 
-async function loadstatus() {
-  const t = spacetime.now("UTC+7"),
-    e = { online: "#4b8", idle: "#fa1", dnd: "#f44", offline: "#778" },
-    o = await fetch("https://api.lanyard.rest/v1/users/783652998319833118"),
-    a = await o.json(),
-    n = a.data.discord_status,
-    s = t.d.getHours(),
-    i = {
-      dnd: s >= 22 || s <= 6 ? "Sleeping" : "Busy / Not Available",
-      offline: s >= 22 || s <= 6 ? "Sleeping" : "Offline",
-      idle: s >= 22 || s <= 6 ? "Sleeping" : "Not Active",
+async function fetchUserStatus(t) {
+  const e = await fetch(`https://api.lanyard.rest/v1/users/${t}`);
+  return await e.json();
+}
+
+function updateStatus(t, e, o) {
+  const a = e.d.getHours(),
+    s = {
+      dnd: a >= 22 || a <= 6 ? "Sleeping" : "Busy / Not Available",
+      offline: a >= 22 || a <= 6 ? "Sleeping" : "Offline",
+      idle: a >= 22 || a <= 6 ? "Sleeping" : "Not Active",
       online: "Online",
       mobile: "Online on Mobile",
       spotify: "Listening to Spotify",
     },
-    l =
+    n = t.data.discord_status,
+    i =
       "online" === n &&
-      !a.data.active_on_discord_desktop &&
-      a.data.active_on_discord_mobile;
-  $("#status").text(l ? i.mobile : i[n]),
-    $("#statsdot").css("background", e[n]),
-    a.data.listening_to_spotify && "online" === n
-      ? ($("#status").text(i.spotify),
+      !t.data.active_on_discord_desktop &&
+      t.data.active_on_discord_mobile;
+  $("#status").text(i ? s.mobile : s[n]),
+    $("#statsdot").css("background", o[n]),
+    t.data.listening_to_spotify && "online" === n
+      ? ($("#status").text(s.spotify),
         $(".spotifyname").css({
           "grid-area": "2 / 2 / 3 / 4",
           display: "block",
         }),
-        $(".songart").css({ "grid-area": "2 / 1 / 3 / 2", "display": "block" }))
-      : $(".spotifyname, .songart").css({ "grid-area": "", "display": "none" });
+        $(".songart").css({ "grid-area": "2 / 1 / 3 / 2", display: "block" }))
+      : $(".spotifyname, .songart").css({ "grid-area": "", display: "none" });
+}
+
+async function loadstatus() {
+  const t = spacetime.now("UTC+7"),
+    e = { online: "#4b8", idle: "#fa1", dnd: "#f44", offline: "#778" },
+    o = "783652998319833118",
+    a = "1243939761614356544",
+    s = await fetchUserStatus(o),
+    n = s.data.discord_status;
+  if ("offline" === n) {
+    const o = await fetchUserStatus(a);
+    updateStatus("offline" === o ? s : o, t, e);
+  } else updateStatus(s, t, e);
 }
 
 async function loadspotify() {
   const t = await fetch("https://api.lanyard.rest/v1/users/783652998319833118"),
     e = await t.json(),
-    { listening_to_spotify: o, discord_status: a, spotify: n } = e.data;
+    { listening_to_spotify: o, discord_status: a, spotify: s } = e.data;
   if (o && "online" === a) {
-    $(".art").attr("src", n.album_art_url),
-      $("#name").text(n.song),
-      $("#artist").text(n.artist),
+    $(".art").attr("src", s.album_art_url),
+      $("#name").text(s.song),
+      $("#artist").text(s.artist),
       $(".nameastat").css("padding-right", "2vw");
     const t = spacetime.now("asia/saigon"),
-      { start: e, end: o } = n.timestamps,
+      { start: e, end: o } = s.timestamps,
       a = ((t.epoch - e) / (o - e)) * 100,
-      s = (((o - e) % 6e4) / 1e3).toFixed(),
+      n = (((o - e) % 6e4) / 1e3).toFixed(),
       i = (((t.epoch - e) % 6e4) / 1e3).toFixed(),
       l = Math.floor((o - e) / 6e4),
       r = Math.floor((t.epoch - e) / 6e4),
@@ -123,7 +133,7 @@ async function loadspotify() {
         return 60 === t ? [0, e + 1] : [o, e];
       },
       [c, u] = d(i, r),
-      [h, g] = d(s, l);
+      [h, g] = d(n, l);
     $("#timestampleft").text(l >= 100 ? `${g}m` : `${g}:${h}`),
       t.epoch > o
         ? $("#timestamp").text("--")
@@ -137,9 +147,9 @@ $(window).on("scroll", function () {
     e = $(document).height(),
     o = $(window).height(),
     a = (t / (e - o)) * 100 < 4 ? 4 : (t / (e - o)) * 100,
-    n = t <= 10 ? 0.35 : 0;
+    s = t <= 10 ? 0.35 : 0;
   $("#progressbar").css("height", `${a}%`),
-    $("#arrow").css("opacity", `${n}`),
+    $("#arrow").css("opacity", `${s}`),
     t >= 10
       ? ($(".scrolllink").attr("href", "javascript:void(0)"),
         $(".scrolllink").attr("title", ""))
@@ -158,19 +168,20 @@ sound.addEventListener(
 let soundplayed = !1,
   soundtoggle = !1,
   angermeter = 1;
+
 setInterval(() => {
   const t = spacetime.now("UTC+7"),
     e = spacetime.now(),
     o = (t) => (t <= 9 ? "0" : "") + t,
     a = o(t.d.getHours()),
-    n = o(t.d.getMinutes()),
-    s = o(t.d.getSeconds()),
+    s = o(t.d.getMinutes()),
+    n = o(t.d.getSeconds()),
     i = t.d.getHours() - e.d.getHours(),
     l = 0 === i ? "(Same time)" : `(Offset by ${Math.abs(i)} hours)`,
     r = t.d.getHours() % 12 || 12,
     d = o(r),
     c = t.d.getHours() < 12 ? "AM" : "PM";
-  $("#time").text(`${a}:${n}:${s} || ${d}:${n}:${s} ${c} ${l}`);
+  $("#time").text(`${a}:${s}:${n} || ${d}:${s}:${n} ${c} ${l}`);
 }, 1e3);
 
 const txtarr = [
@@ -202,15 +213,12 @@ const txtarr = [
   "（づ￣3￣）づ╭❤️～",
   "¯\\_(ツ)_/¯",
   "5!=120",
-]; 
+];
 
-$("body").scrollHeight > $("body").clientHeight ?
-  $("#progressbar").css("display", "block") : $("#progressbar").css("display", "none")
-
-console.log($("body").scrollHeight)
-console.log($("body").clientHeight)
-
-$("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
+$("body").scrollHeight > $("body").clientHeight
+  ? $("#progressbar").css("display", "block")
+  : $("#progressbar").css("display", "none"),
+  $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
   window.innerHeight > 1232 &&
     window.innerHeight > window.innerWidth &&
     alert(
@@ -219,7 +227,7 @@ $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
   window.innerWidth <= 527 &&
     alert(
       'Get a better phone! Haiyaa I can\'t code stuffs for such a small phone!\nMua điện thoại mới đi! Cũ quá rồi bạn ơi:) mình ko lập trình cho điện thoại này được!\n\nIf continue, visual glitches are expected!\nNếu tiếp tục truy cập thì sẽ nhìn thấy vài lỗi "nho nhỏ" thôi:)'
-    ), 
+    ),
   loadtooltip(),
   loadstatus(),
   setInterval(function () {
