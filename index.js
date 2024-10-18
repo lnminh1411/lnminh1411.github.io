@@ -224,7 +224,7 @@ $("body").scrollHeight > $("body").clientHeight
     alert(
       "Use landscape mode for better experience!\nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!"
     ),
-  window.innerWidth <= 527 &&
+  window.innerWidth <= 527 && window.innerHeight < 1232 &&
     alert(
       'Get a better phone! Haiyaa I can\'t code stuffs for such a small phone!\nMua điện thoại mới đi! Cũ quá rồi bạn ơi:) mình ko lập trình cho điện thoại này được!\n\nIf continue, visual glitches are expected!\nNếu tiếp tục truy cập thì sẽ nhìn thấy vài lỗi "nho nhỏ" thôi:)'
     ),
