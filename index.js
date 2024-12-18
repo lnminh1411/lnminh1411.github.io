@@ -218,16 +218,12 @@ const txtarr = [
 $("body").scrollHeight > $("body").clientHeight
   ? $("#progressbar").css("display", "block")
   : $("#progressbar").css("display", "none"),
-  $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]),
-  window.innerHeight > 1232 &&
-    window.innerHeight > window.innerWidth &&
-    alert(
+  $("#titletxt").text(txtarr[Math.floor(Math.random() * txtarr.length)]), 
+    window.innerHeight > window.innerWidth
+  ? alert(
       "Use landscape mode for better experience!\nXoay ngang thiết bị của bạn để có trải nghiệm tốt hơn!"
-    ),
-  window.innerWidth <= 527 &&
-    alert(
-      'Get a better phone! Haiyaa I can\'t code stuffs for such a small phone!\nMua điện thoại mới đi! Cũ quá rồi bạn ơi:) mình ko lập trình cho điện thoại này được!\n\nIf continue, visual glitches are expected!\nNếu tiếp tục truy cập thì sẽ nhìn thấy vài lỗi "nho nhỏ" thôi:)'
-    ),
+    )
+  :
   loadtooltip(),
   loadstatus(),
   setInterval(function () {
@@ -236,7 +232,7 @@ $("body").scrollHeight > $("body").clientHeight
         "%cMate, what are you doing here? Get out and don't paste anything here! (Unless ofc you know what you're doing, in that case, don't blame me if anything happen :) )",
         "color:cyan; font-size:25px"
       );
-  }, 1e3),
+  }, 1e4),
   setInterval(function () {
     loadspotify();
   }, 500);
