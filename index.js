@@ -5,22 +5,7 @@ function rickroll() {
 function loadtooltip() {
   const t = document.querySelectorAll('[data-bs-toggle="tooltip"]');
   [...t].map((t) => new bootstrap.Tooltip(t));
-}
-
-function togglesound() {
-  0 == soundplayed
-    ? (sound.play(),
-      (sound.volume = 0.3),
-      (soundtoggle = !0),
-      (soundplayed = !0),
-      $("span.sound i").attr("class", "bi bi-volume-up-fill"))
-    : (1 == soundtoggle
-        ? ((sound.volume = 0),
-          $("span.sound i").attr("class", "bi bi-volume-mute-fill"))
-        : ((sound.volume = 0.3),
-          $("span.sound i").attr("class", "bi bi-volume-up-fill")),
-      (soundtoggle = !soundtoggle));
-}
+} 
 
 function bang() {
   let t = new Audio("./flashbang.mp3");
@@ -155,19 +140,9 @@ $(window).on("scroll", function () {
         $(".scrolllink").attr("title", ""))
       : ($(".scrolllink").attr("href", "#aboutmesectionscroll"),
         $(".scrolllink").attr("title", "Scroll down!"));
-});
+}); 
 
-let sound = new Audio("./Expendable.mp3");
-sound.addEventListener(
-  "ended",
-  function () {
-    (this.currentTime = 0), this.play();
-  },
-  !1
-);
-let soundplayed = !1,
-  soundtoggle = !1,
-  angermeter = 1;
+let angermeter = 1;
 
 setInterval(() => {
   const t = spacetime.now("UTC+7"),
