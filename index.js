@@ -203,10 +203,6 @@ $("body").scrollHeight > $("body").clientHeight
   loadstatus(),
   setInterval(function () {
     loadstatus(),
-      console.log(
-        "%cMate, what are you doing here? Get out and don't paste anything here! (Unless ofc you know what you're doing, in that case, don't blame me if anything happen :) )",
-        "color:cyan; font-size:25px"
-      );
   }, 1e4),
   setInterval(function () {
     loadspotify();
