@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LNMinh</title>
     <meta name="description" content="Lê Nhật Minh — student, self-taught front-end developer.">
-    <meta name="theme-color" content="#020617">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23020617%22%2F%3E%3Cpath%20d%3D%22M10%206l12%2010-12%2010%22%20fill%3D%22none%22%20stroke%3D%22%2322C55E%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+    <meta name="theme-color" content="#1e1e2e">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%231e1e2e%22%2F%3E%3Cpath%20d%3D%22M10%206l12%2010-12%2010%22%20fill%3D%22none%22%20stroke%3D%22%23cba6f7%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -67,16 +67,16 @@
     </aside>
 
     <!-- 3b. Hero + Terminal -->
-    <header class="flex flex-col items-center relative max-w-3xl mx-auto px-4 font-mono w-full pt-6 pb-24 md:min-h-dvh md:justify-center md:py-0">
+    <header class="flex flex-col items-center relative max-w-3xl mx-auto px-4 font-mono w-full pt-6 pb-24 md:min-h-dvh md:justify-center md:pt-64 md:pb-16">
       <div id="term-panel" class="w-full bg-card border border-border rounded-xl p-5 shadow-2xl cursor-text">
         <!-- Static HTML final state -->
         <div class="text-sm">
           <div id="intro-line1">
-            <span class="text-accent">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd1" class="text-fg">whoami</span>
+            <span class="text-prompt">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd1" class="text-fg">whoami</span>
           </div>
           <h1 id="intro-h1" class="text-3xl md:text-5xl font-medium text-fg my-2">Lê Nhật Minh</h1>
           <div id="intro-line3">
-            <span class="text-accent">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd2" class="text-fg">fortune</span>
+            <span class="text-prompt">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd2" class="text-fg">fortune</span>
           </div>
           <div class="my-1 flex items-center">
             <p id="tagline" class="text-fg-muted">This page isn't working correctly!</p>
@@ -89,7 +89,7 @@
 
         <!-- Live input line -->
         <div class="flex items-center text-sm pt-2 border-t border-border/50">
-          <span class="select-none text-accent shrink-0">lnminh@vn</span>
+          <span class="select-none text-prompt shrink-0">lnminh@vn</span>
           <span class="select-none text-fg-muted shrink-0">:~$</span>
           <input id="term-input" aria-label="Terminal command" autocomplete="off" autocapitalize="off" spellcheck="false" class="w-full bg-transparent text-fg border-none outline-none focus:outline-none p-0 ml-2 caret-accent font-mono text-sm">
         </div>

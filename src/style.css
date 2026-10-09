@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #020617;
-  --color-card: #0E1223;
-  --color-muted: #1A1E2F;
-  --color-secondary: #1E293B;
-  --color-border: #334155;
-  --color-fg: #F8FAFC;
-  --color-fg-alt: #CBD5E1;
-  --color-fg-muted: #94A3B8;
-  --color-accent: #22C55E;
-  --color-on-accent: #0F172A;
-  --color-danger: #EF4444;
-  --color-idle: #F59E0B;
-  --color-offline: #64748B;
+  /* Catppuccin Mocha */
+  --color-bg: #1e1e2e;        /* base */
+  --color-card: #181825;      /* mantle */
+  --color-muted: #313244;     /* surface0 */
+  --color-secondary: #313244; /* surface0 */
+  --color-border: #45475a;    /* surface1 */
+  --color-fg: #cdd6f4;        /* text */
+  --color-fg-alt: #bac2de;    /* subtext1 */
+  --color-fg-muted: #a6adc8;  /* subtext0 */
+  --color-accent: #cba6f7;    /* mauve */
+  --color-on-accent: #11111b; /* crust */
+  --color-prompt: #a6e3a1;    /* green */
+  --color-online: #a6e3a1;    /* green */
+  --color-danger: #f38ba8;    /* red */
+  --color-idle: #f9e2af;      /* yellow */
+  --color-offline: #6c7086;   /* overlay0 */
 
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;

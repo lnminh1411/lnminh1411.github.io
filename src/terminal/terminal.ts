@@ -23,7 +23,7 @@ export function initTerminal(getCurrentTagline: () => string): void {
     line.className = "flex text-sm my-0.5 break-all";
 
     const promptSpan = document.createElement("span");
-    promptSpan.className = "select-none text-accent shrink-0";
+    promptSpan.className = "select-none text-prompt shrink-0";
     promptSpan.textContent = "lnminh@vn";
 
     const sepSpan = document.createElement("span");

@@ -49,14 +49,14 @@ export function getStatusDetails(presence: Presence | null, vnH: number): { text
   const status = presence.discord_status;
 
   if (presence.listening_to_spotify && status === "online") {
-    return { text: "Listening to Spotify", dotClass: "bg-accent" };
+    return { text: "Listening to Spotify", dotClass: "bg-online" };
   }
 
   if (status === "online") {
     if (presence.active_on_discord_mobile && !presence.active_on_discord_desktop) {
-      return { text: "Online on mobile", dotClass: "bg-accent" };
+      return { text: "Online on mobile", dotClass: "bg-online" };
     }
-    return { text: "Online", dotClass: "bg-accent" };
+    return { text: "Online", dotClass: "bg-online" };
   }
 
   if (status === "idle") {
