@@ -1,213 +1,182 @@
 <!doctype html>
-<html lang=en>
-
-<head>
-    <meta charset=UTF-8>
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
-        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css rel=stylesheet>
-    <title>About me</title>
-    <meta name=description content="Basically an about me page">
-    <link rel=stylesheet href=style.min.css>
-    <link href=https://unpkg.com/@csstools/normalize.css rel=stylesheet />
-    <script src=https://polyfill-fastly.io/v3/polyfill.min.js></script>
-    <script src=https://code.jquery.com/jquery-3.7.1.min.js
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin=anonymous></script>
-    <script src=https://unpkg.com/spacetime></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-</head>
-
-<body>
-    <div class="flashbang"></div>
+<html lang="en" class="motion-safe:scroll-smooth">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNMinh</title>
+    <meta name="description" content="Lê Nhật Minh — student, self-taught front-end developer.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23020617%22%2F%3E%3Cpath%20d%3D%22M10%206l12%2010-12%2010%22%20fill%3D%22none%22%20stroke%3D%22%2322C55E%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-bg text-fg font-sans min-h-dvh relative overflow-x-hidden">
     <noscript>
-        <a href="https://support.google.com/adsense/answer/12654?hl=en">This site requires javascript to be enabled!
-            Enable javascript on your browser or click on this message for support</a>
+      <div class="bg-secondary border-b border-border py-2 px-4 text-center text-sm text-fg-alt">
+        Some live bits (status, terminal) need JavaScript. Everything else works without it.
+      </div>
     </noscript>
-    <div id="bg"></div>
-    <div id=progressbar></div>
-    <div class="upright">Current time in Vietnam (UTC+7)<div id="time"></div>
-    </div>
-    <div class=upleft>
-        <div class="pfp">
-            <img class="pic"
-                src="https://cdn.discordapp.com/avatars/1243939761614356544/0267f741d7b45d0e3f1ad94bb936caab"
-                alt="Avatar">
+
+    <div id="scroll-progress" aria-hidden="true"></div>
+    <div id="flashbang" class="flashbang" hidden></div>
+
+    <!-- 3a. Presence card -->
+    <aside id="presence" aria-label="Live status" class="bg-card border border-border rounded-xl p-4 w-[calc(100%-2rem)] mx-4 mt-4 mb-2 md:m-0 md:absolute md:top-4 md:left-4 md:max-w-xs md:w-80 z-20 shadow-lg">
+      <!-- Row 1: Avatar, Name, Status -->
+      <div class="flex items-center gap-3">
+        <div id="avatar-container" class="relative w-12 h-12 shrink-0">
+          <img id="avatar-img" src="https://cdn.discordapp.com/avatars/1243939761614356544/0267f741d7b45d0e3f1ad94bb936caab" alt="Avatar of Lê Nhật Minh" width="48" height="48" class="w-12 h-12 rounded-full object-cover">
+          <div id="avatar-fallback" hidden class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-mono font-medium text-fg text-sm">LM</div>
         </div>
-        <div class="nameastat">
-            <p id="myname">Lê Nhật Minh</p>
-            <div id="statsdot"></div>
-            <div id="status"></div>
+        <div class="min-w-0 flex-1">
+          <p class="font-mono font-medium text-fg truncate">Lê Nhật Minh</p>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span id="presence-dot" class="w-2.5 h-2.5 rounded-full shrink-0 bg-offline"></span>
+            <span id="presence-status" class="text-xs text-fg-muted truncate" aria-live="polite">Connecting…</span>
+          </div>
         </div>
-        <n class="desktop-display">
-            <div class="songart">
-                <img class="art" alt="song art">
+      </div>
+
+      <!-- Row 2: Spotify (hidden unless listening) -->
+      <div id="spotify-card" hidden class="mt-3 pt-3 border-t border-border flex items-center gap-3">
+        <img id="spotify-art" alt="Album art" width="56" height="56" class="w-14 h-14 rounded-md object-cover shrink-0 bg-secondary">
+        <div class="min-w-0 flex-1">
+          <a id="spotify-title" href="#" target="_blank" rel="noopener" class="block text-sm font-medium text-fg truncate hover:underline">Song title</a>
+          <p id="spotify-artist" class="text-xs text-fg-muted truncate">Artist</p>
+          <div class="mt-2">
+            <div class="h-1 bg-secondary rounded-full overflow-hidden">
+              <div id="spotify-progress" class="h-full bg-accent origin-left" style="transform: scaleX(0);"></div>
             </div>
-        </n>
-        <span class="desktop-display">
-            <div class="spotifyname">
-                <p id="name"></p>
-                <p id="artist"></p>
-                <div style="display:inline">
-                    <p style="display:inline-block" id="timestamp"></p>
-                    <div id="songprogressbar">
-                        <div id="songprogress"></div>
-                    </div>
-                    <p style="display:inline-block" id="timestampleft"></p>
-                </div>
+            <div class="flex justify-between text-[10px] text-fg-muted tabular-nums mt-1">
+              <span id="spotify-elapsed">0:00</span>
+              <span id="spotify-total">0:00</span>
             </div>
-        </span>
-    </div>
-    <header>
-        <section style="width:100vw">
-            <h1><svg width=100% height=56%>
-                    <rect x=0 y=0 width=100% height=100% style="fill:none"></rect>
-                    <text x=50% y=96% text-anchor=middle>LNMinh</text>
-                </svg>
-                <pre id="titletxt">This page isn't working correctly!</pre>
-                <div><a href=https://github.com/lnminh1411/ target=_blank onMouseOver="this.style.opacity='.2'"
-                        onMouseOut="this.style.opacity='.8'"><i class="bi bi-github contactitem"></i>&ensp;</a><a
-                        href=https://www.instagram.com/im.lnminh1411 target=_blank
-                        onMouseOver="this.style.opacity='.2'" onMouseOut="this.style.opacity='.8'"><i
-                            class="bi bi-instagram contactitem"></i>&ensp;</a><a
-                        href=https://www.facebook.com/im.lnminh1411 target=_blank onMouseOver="this.style.opacity='.2'"
-                        onMouseOut="this.style.opacity='.8'"><i class="bi bi-facebook contactitem"></i>&ensp;</a><a
-                        href=https://discord.com/users/1243939761614356544 target=_blank onMouseOver="this.style.opacity='.2'"
-                        onMouseOut="this.style.opacity='.8'"><i class="bi bi-discord contactitem"></i>&ensp;</a><a
-                        href=mailto:contact@lnminh1411.is-a.dev target=_blank onMouseOver="this.style.opacity='.2'"
-                        onMouseOut="this.style.opacity='.8'"><i class="bi bi-envelope-at contactitem"></i>&ensp;</a><a
-                        href=https://m.me/lenhatminh1411 target=_blank onMouseOver="this.style.opacity='.2'"
-                        onMouseOut="this.style.opacity='.8'"><i class="bi bi-messenger contactitem"></i></a>
-                    </div>
-            </h1>
-        </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Vietnam Clock -->
+      <div class="mt-3 pt-3 border-t border-border text-xs text-fg-muted">
+        <div class="flex items-center justify-between tabular-nums">
+          <span class="text-fg font-medium" id="vn-time-24">--:--:--</span>
+          <span id="vn-time-12">--:-- --</span>
+        </div>
+        <p class="mt-0.5 text-[11px]" id="vn-time-rel">Loading time...</p>
+      </div>
+    </aside>
+
+    <!-- 3b. Hero + Terminal -->
+    <header class="flex flex-col items-center relative max-w-3xl mx-auto px-4 font-mono w-full pt-6 pb-24 md:min-h-dvh md:justify-center md:py-0">
+      <div id="term-panel" class="w-full bg-card border border-border rounded-xl p-5 shadow-2xl cursor-text">
+        <!-- Static HTML final state -->
+        <div class="text-sm">
+          <div id="intro-line1">
+            <span class="text-accent">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd1" class="text-fg">whoami</span>
+          </div>
+          <h1 id="intro-h1" class="text-3xl md:text-5xl font-medium text-fg my-2">Lê Nhật Minh</h1>
+          <div id="intro-line3">
+            <span class="text-accent">lnminh@vn</span><span class="text-fg-muted">:~$ </span><span id="intro-cmd2" class="text-fg">fortune</span>
+          </div>
+          <div class="my-1 flex items-center">
+            <p id="tagline" class="text-fg-muted">This page isn't working correctly!</p>
+            <span id="intro-caret" class="inline-block w-2.5 h-4 bg-accent align-middle ml-1 caret-blink" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- Output log -->
+        <div id="term-log" role="log" aria-live="polite" class="max-h-[40vh] overflow-y-auto my-3 space-y-1"></div>
+
+        <!-- Live input line -->
+        <div class="flex items-center text-sm pt-2 border-t border-border/50">
+          <span class="select-none text-accent shrink-0">lnminh@vn</span>
+          <span class="select-none text-fg-muted shrink-0">:~$</span>
+          <input id="term-input" aria-label="Terminal command" autocomplete="off" autocapitalize="off" spellcheck="false" class="w-full bg-transparent text-fg border-none outline-none focus:outline-none p-0 ml-2 caret-accent font-mono text-sm">
+        </div>
+
+        <!-- Chip buttons -->
+        <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border/40">
+          <button type="button" class="term-chip border border-border rounded-md px-3 py-1.5 text-sm min-h-11 hover:border-fg-muted text-fg transition-colors" data-cmd="help">help</button>
+          <button type="button" class="term-chip border border-border rounded-md px-3 py-1.5 text-sm min-h-11 hover:border-fg-muted text-fg transition-colors" data-cmd="about">about</button>
+          <button type="button" class="term-chip border border-border rounded-md px-3 py-1.5 text-sm min-h-11 hover:border-fg-muted text-fg transition-colors" data-cmd="stats">stats</button>
+          <button type="button" class="term-chip border border-border rounded-md px-3 py-1.5 text-sm min-h-11 hover:border-fg-muted text-fg transition-colors" data-cmd="contact">contact</button>
+        </div>
+      </div>
+
+      <!-- Social links row in hero -->
+      <div class="flex items-center justify-center gap-2 mt-6">
+        <!-- @socials -->
+      </div>
+
+      <!-- Down-arrow link -->
+      <a id="hero-arrow" href="#about" aria-label="Scroll to about" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-fg-muted hover:text-fg transition-opacity duration-300">
+        <svg class="w-6 h-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m19 9-7 7-7-7"></path>
+        </svg>
+      </a>
     </header>
-    <a onclick="rickroll()" title=";)">
-        <img src="smth_cute.png" id="sleeper" title="You're not allowed to wake him up!">
-    </a>
-    <div id="toolbar"> 
-        <span class="lightmode" data-bs-toggle="tooltip" data-bs-title="Toggle light mode" data-bs-placement="left"><i
-                id="change" class="bi bi-moon-stars-fill" onMouseOver="this.style.opacity='.5'"
-                onMouseOut="this.style.opacity='1'" onclick="flashbang()"></i></span>
-    </div>
-    <div id="arrow" title="Scroll down!">
-        <a href="#aboutmesectionscroll" class="scrolllink">
-            <svg stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" fill="none"
-                viewBox="0 0 512 512" onMouseOver="this.style.opacity='.8'" onMouseOut="this.style.opacity='.35'">
-                <path d="M112 184l144 144 144-144"></path>
-            </svg></a>
-    </div>
-    <main>
-        <div class="aboutmesection" id="aboutmesectionscroll">
-            <h3 data-aos="fade-in" style=font-weight:400>About me:</h3>
-            <p data-aos="fade-in">Hi there! I'm Nhật Minh (or NMinh for short). I'm currently a high school student and a
-                self-taught programmer developing front-end coding skills. I've been building my coding skills since 5th
-                grade (Although having to stop in 8th and 9th grade) and since had have some experience with coding and
-                scripting many languages (Can I use them now? No) <br> Wanna contact me? (you probably shouldn't) <br>
-                I'm most active on Facebook, so feel free to reach out to me at any time!</p>
-            <h3 style=font-weight:400 data-aos="fade-in">Skills:</h3>
-            <div data-aos="fade-in">
-                <a href="https://www.python.org/"><img
-                        src="https://shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"
-                        alt="Python" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://www.javascript.com/"><img
-                        src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                        alt="Javascript" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://www.typescriptlang.org/"><img
-                        src="https://shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
-                        alt="TypeScript" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://nodejs.org/en"><img
-                        src="https://shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"
-                        alt="Node.js" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://html.com/"><img
-                        src="https://shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-                        alt="HTML" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://css3.com/"><img
-                        src="https://shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
-                        alt="CSS" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-            </div>
-            <h3 data-aos="fade-in" style="font-weight:400;">Other stuffs I use:</h3>
-            <div class="stuffs" data-aos="fade-in">
-                <a href="https://github.com/microsoft/terminal"><img
-                        src="https://shields.io/badge/windows%20terminal-4D4D4D?style=for-the-badge&logo=windows%20terminal&logoColor=white"
-                        alt="Windows Terminal" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://git-scm.com/"><img
-                        src="https://shields.io/badge/GIT_Terminal-E44C30?style=for-the-badge&logo=git&logoColor=white"
-                        alt="Git Terminal" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://aka.ms/CanaryChannelLatest"><img
-                        src="https://shields.io/badge/Windows_Insider_Canary-0078D6?style=for-the-badge&logo=windows&logoColor=white"
-                        alt="Windows Canary" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://learn.microsoft.com/en-us/windows/wsl/"><img
-                        src="https://shields.io/badge/WSL-0a97f5?style=for-the-badge&logo=linux&logoColor=white"
-                        alt="WSL" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://ubuntu.com/"><img
-                        src="https://shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"
-                        alt="Ubuntu" onMouseOver="this.style.opacity='.3'" onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://www.mozilla.org/vi/firefox/developer/"><img
-                        src="https://shields.io/badge/Firefox_Developer-0078D7?style=for-the-badge&logo=Firefox-Browser&logoColor=white"
-                        alt="Firefox Developer" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://code.visualstudio.com/insiders/"><img
-                        src="https://shields.io/badge/Visual_Studio_Code_Insider-22B39B?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"
-                        alt="VSCode Insider" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-                <a href="https://visualstudio.microsoft.com/"><img
-                        src="https://shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white"
-                        alt="Visual Studio" onMouseOver="this.style.opacity='.3'"
-                        onMouseOut="this.style.opacity='1'"></a>
-            </div>
-            <h3 data-aos="fade-in">Some stats:</h3>
-            <p data-aos="fade-in">(It's not good ngl)</p>
-            <a href="https://github.com/lnminh1411">
-                <div class="desktop-display" data-aos="fade-in">
-                    <img style="width: 85vw;"
-                        src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
-                </div>
-                <div class="mobile-display" data-aos="fade-in">
-                    <img style="width: 85vw;"
-                        src="https://github-profile-trophy.vercel.app/?username=lnminh1411&theme=algolia&no-frame=true&no-bg=true&column=4&title=Joined2020,Experience,Commits,Issues,PullRequest,Repositories,Followers,Stars" />
-                </div>
-                <img data-aos="fade-in" class="stats"
-                    src="https://github-readme-stats.vercel.app/api?username=lnminh1411&show_icons=true&theme=transparent&hide_border=true" />
-                <img data-aos="fade-in" class="lang"
-                    src="https://github-readme-stats.vercel.app/api/top-langs?username=lnminh1411&layout=compact&hide_border=true&langs_count=8&card_width=320&theme=transparent" />
-                <img data-aos="fade-in" class="streak"
-                    src="https://github-readme-streak-stats.herokuapp.com/?user=lnminh1411&theme=transparent&hide_border=true">
-                <div data-aos="fade-in" class="desktop-display">
-                    <img
-                        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lnminh1411&theme=transparent">
-                    <img class="prodtime"
-                        src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lnminh1411&utcOffset=+7&theme=transparent">
-                </div>
-            </a>
+
+    <!-- 3c. Main sections -->
+    <main class="space-y-16 pb-20">
+      <!-- #about -->
+      <section id="about" class="section-reveal max-w-3xl mx-auto py-16 px-4">
+        <h2 class="text-2xl md:text-3xl font-medium text-fg mb-6">About me</h2>
+        <p class="text-fg-alt leading-relaxed">Hi there! I'm Nhật Minh (or NMinh for short). I'm currently a high school student and a
+self-taught programmer developing front-end coding skills. I've been building my coding skills since 5th
+grade (Although having to stop in 8th and 9th grade) and since had have some experience with coding and
+scripting many languages (Can I use them now? No) <br><br>
+Wanna contact me? (you probably shouldn't) <br><br>
+I'm most active on Facebook, so feel free to reach out to me at any time!</p>
+      </section>
+
+      <!-- #skills -->
+      <section id="skills" class="section-reveal max-w-3xl mx-auto py-16 px-4">
+        <h2 class="text-2xl md:text-3xl font-medium text-fg mb-6">Skills</h2>
+        <div class="flex flex-wrap gap-3">
+          <!-- @skills -->
         </div>
+      </section>
+
+      <!-- #tools -->
+      <section id="tools" class="section-reveal max-w-3xl mx-auto py-16 px-4">
+        <h2 class="text-2xl md:text-3xl font-medium text-fg mb-6">Other stuff I use</h2>
+        <div class="flex flex-wrap gap-3">
+          <!-- @tools -->
+        </div>
+      </section>
+
+      <!-- #stats -->
+      <section id="stats" class="section-reveal max-w-3xl mx-auto py-16 px-4">
+        <h2 class="text-2xl md:text-3xl font-medium text-fg mb-1">Some stats</h2>
+        <p class="text-sm text-fg-muted mb-8">(It's not good ngl)</p>
+        <!-- @stats -->
+      </section>
     </main>
-    <footer>
-        <a href="https://github.com/lnminh1411/" class="copyright">
-            <footertext>Copyleft © 2024-2025 Lnminh</footertext>
+
+    <!-- 3e. Easter egg buttons -->
+    <div class="fixed bottom-3 right-3 md:bottom-6 md:right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">
+      <button id="sleeper" type="button" class="cursor-not-allowed transition-transform hover:scale-105 active:scale-95" title="You're not allowed to wake him up!">
+        <img src="/smth_cute.png" alt="A sleeping cat. Don't wake him up." width="100" height="56" class="w-[72px] h-10 md:w-[100px] md:h-[56px] object-contain">
+      </button>
+      <button id="moon-btn" type="button" aria-label="Toggle light mode" data-tip="Toggle light mode" class="w-11 h-11 rounded-full bg-card border border-border text-fg-alt hover:text-fg flex items-center justify-center shadow-lg transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 3f. Footer -->
+    <footer class="border-t border-border py-8 px-4 text-center text-sm text-fg-muted">
+      <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="https://github.com/lnminh1411/" target="_blank" rel="noopener" class="hover:text-fg transition-colors">
+          Copyleft &copy; 2024&ndash;<span id="footer-year">2026</span> LNMinh
         </a>
-        <div class="desktop-display">
-            <a href="https://github.com/lnminh1411/lnminh1411.github.io" class="sourcecode">
-                <sourcecode>View Source Code Of this page</sourcecode>
-            </a>
-        </div>
-
+        <a href="https://github.com/lnminh1411/lnminh1411.github.io" target="_blank" rel="noopener" class="hover:text-fg transition-colors">
+          View source
+        </a>
+      </div>
     </footer>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-</body>
-<script src=index.min.js></script>
 
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
