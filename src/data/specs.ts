@@ -1,0 +1,17 @@
+export const SPECS: ReadonlyArray<{ key: string; value: string }> = [
+  { key: "CPU", value: "Intel Core Ultra 7 265K" },
+  { key: "Board", value: "Gigabyte B860M GAMING X WIFI 6E (rev 2.0)" },
+  { key: "RAM", value: "64 GB DDR5-6000 CL36 (G.Skill Trident Z5 Neo 2x32)" },
+  { key: "GPU", value: "Asus Dual RX 6600" },
+  { key: "GPU", value: "Gigabyte RTX 3050 6GB" },
+  { key: "Storage", value: "Kioxia Exceria Plus G3 1TB NVMe" },
+  { key: "Storage", value: "WD Blue SN550 500GB NVMe" },
+  { key: "Storage", value: "Colorful SL500 256GB SATA" },
+  { key: "Storage", value: "Kingston A400 120GB SATA" },
+  { key: "Storage", value: "WD Blue 1TB HDD" },
+  { key: "PSU", value: "Darkflash PMT750 Gold" },
+  { key: "Cooling", value: "ID-Cooling FX240 INF ARGB" },
+  { key: "Case", value: "Kenoo Esport EM700-3F" },
+  { key: "Displays", value: "MSI Pro MP275 + 2x Dell E1715S" },
+  { key: "Extra", value: "ESP32-S3 N16R8 control board" },
+];

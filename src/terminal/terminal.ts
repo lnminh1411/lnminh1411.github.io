@@ -79,6 +79,65 @@ export function initTerminal(getCurrentTagline: () => string): void {
       line.appendChild(a);
       log.appendChild(line);
     },
+    printKeyValue(key: string, value: string): void {
+      const line = document.createElement("div");
+      line.className = "text-sm my-0.5 break-all";
+
+      const keySpan = document.createElement("span");
+      keySpan.className = "text-accent whitespace-pre";
+      keySpan.textContent = key.padEnd(10);
+
+      const valSpan = document.createElement("span");
+      valSpan.className = "text-fg";
+      valSpan.textContent = value;
+
+      line.appendChild(keySpan);
+      line.appendChild(valSpan);
+      log.appendChild(line);
+    },
+    printAction(text: string, onClick: () => void): void {
+      const line = document.createElement("div");
+      line.className = "text-sm my-0.5";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = text;
+      btn.className = "text-accent hover:underline cursor-pointer";
+      btn.addEventListener("click", onClick);
+      line.appendChild(btn);
+      log.appendChild(line);
+    },
+    printActions(items: Array<{ text: string; onClick?: () => void; href?: string }>): void {
+      const line = document.createElement("div");
+      line.className = "text-sm my-0.5 flex flex-wrap items-center gap-2";
+
+      items.forEach((item, idx) => {
+        if (item.onClick) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = item.text;
+          btn.className = "text-accent hover:underline cursor-pointer";
+          btn.addEventListener("click", item.onClick);
+          line.appendChild(btn);
+        } else if (item.href) {
+          const a = document.createElement("a");
+          a.href = item.href;
+          a.textContent = item.text;
+          a.className = "text-accent hover:underline";
+          a.target = "_blank";
+          a.rel = "noopener";
+          line.appendChild(a);
+        }
+
+        if (idx < items.length - 1) {
+          const sep = document.createElement("span");
+          sep.className = "text-fg-muted select-none";
+          sep.textContent = "  ";
+          line.appendChild(sep);
+        }
+      });
+
+      log.appendChild(line);
+    },
     clear(): void {
       log.replaceChildren();
     },

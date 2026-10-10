@@ -4,6 +4,8 @@ import { initIntro } from "./terminal/intro";
 import { initTerminal } from "./terminal/terminal";
 import { initPresence } from "./presence";
 import { initEggs } from "./eggs";
+import { initRepoPreview } from "./repo-preview";
+import { initPinned } from "./pinned";
 
 function initApp(): void {
   const currentTagline = getRandomTagline();
@@ -19,6 +21,10 @@ function initApp(): void {
 
   // Wire easter eggs
   initEggs();
+
+  // Wire pinned repos & preview dialog
+  initRepoPreview();
+  initPinned();
 
   // Wire footer year
   const footerYear = document.getElementById("footer-year");

@@ -11,7 +11,7 @@ export function getStatsUrl(username: string = USERNAME): string {
 }
 
 export function getTopLangsUrl(username: string = USERNAME): string {
-  return `${STATS_HOSTS.stats}/api/top-langs?username=${encodeURIComponent(username)}&layout=compact&langs_count=8&card_width=320&hide_border=true&bg_color=1e1e2e&title_color=cba6f7&text_color=cdd6f4`;
+  return `${STATS_HOSTS.stats}/api/top-langs?username=${encodeURIComponent(username)}&layout=compact&langs_count=8&card_width=320&hide_border=true&bg_color=1e1e2e&title_color=cba6f7&text_color=cdd6f4&size_weight=0.5&count_weight=0.5`;
 }
 
 export function getTrophyUrl(mobile: boolean = false, username: string = USERNAME): string {

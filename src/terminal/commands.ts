@@ -1,5 +1,8 @@
 import { getVietnamTimeInfo, getStatusDetails } from "../presence";
 import { getPresence } from "../lanyard";
+import { SPECS } from "../data/specs";
+import { PINNED } from "../data/pinned";
+import { openRepoPreview } from "../repo-preview";
 
 export interface TerminalIO {
   print(text: string): void;
@@ -7,6 +10,9 @@ export interface TerminalIO {
   printDanger(text: string): void;
   printSuccess(text: string): void;
   printLink(text: string, href: string, target?: string): void;
+  printKeyValue(key: string, value: string): void;
+  printAction(text: string, onClick: () => void): void;
+  printActions(items: Array<{ text: string; onClick?: () => void; href?: string }>): void;
   clear(): void;
   getHistory(): string[];
   getCurrentTagline(): string;
@@ -28,6 +34,14 @@ const OPEN_TARGETS: Record<string, string> = {
   email: "mailto:contact@lnminh1411.is-a.dev",
   messenger: "https://m.me/lenhatminh1411",
 };
+
+function runSpecs(_args: string[], io: TerminalIO): void {
+  io.printSuccess("lnminh@vn");
+  io.printMuted("---------");
+  for (const item of SPECS) {
+    io.printKeyValue(item.key, item.value);
+  }
+}
 
 export const COMMANDS: Record<string, CommandDefinition> = {
   help: {
@@ -55,6 +69,27 @@ export const COMMANDS: Record<string, CommandDefinition> = {
       io.printLink("↓ jump to section", "#about");
     },
   },
+  projects: {
+    description: "List pinned projects",
+    run(_args, io) {
+      for (const repo of PINNED) {
+        io.print(repo.repo);
+        io.printMuted(repo.fallbackDescription);
+        io.printActions([
+          {
+            text: "preview",
+            onClick: () => {
+              openRepoPreview(repo.owner, repo.repo);
+            },
+          },
+          {
+            text: "github ↗",
+            href: `https://github.com/${repo.owner}/${repo.repo}`,
+          },
+        ]);
+      }
+    },
+  },
   skills: {
     description: "List programming skills and jump to section",
     run(_args, io) {
@@ -65,9 +100,25 @@ export const COMMANDS: Record<string, CommandDefinition> = {
   tools: {
     description: "List tools & environments I use",
     run(_args, io) {
-      io.print("Windows Terminal, Git, Windows Insider Canary, WSL, Ubuntu, Firefox Developer, VS Code Insiders, Visual Studio");
+      io.print("Windows Terminal, Git, Windows Insider Canary, WSL, Ubuntu, Brave Nightly, VS Code Insiders, Visual Studio");
       io.printLink("↓ jump to section", "#tools");
     },
+  },
+  agents: {
+    description: "List AI agents I use and jump to section",
+    run(_args, io) {
+      io.print("Claude Code, Google Antigravity, Occamy 1.0 35B-A3B (local)");
+      io.printLink("↓ jump to section", "#agents");
+    },
+  },
+  specs: {
+    description: "Show my PC specs",
+    run: runSpecs,
+  },
+  neofetch: {
+    description: "Show my PC specs",
+    hidden: true,
+    run: runSpecs,
   },
   stats: {
     description: "Summary of GitHub stats and jump to section",

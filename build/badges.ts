@@ -2,9 +2,10 @@ import * as icons from "simple-icons";
 
 export interface BadgeItem {
   label: string;
-  href: string;
+  href?: string;
   iconKey?: string;
   fallbackHex: string;
+  note?: string;
 }
 
 export interface SocialItem {
@@ -134,10 +135,10 @@ export const TOOLS: BadgeItem[] = [
     fallbackHex: "E95420",
   },
   {
-    label: "Firefox Developer",
-    href: "https://www.mozilla.org/vi/firefox/developer/",
-    iconKey: "siFirefoxbrowser",
-    fallbackHex: "0078D7",
+    label: "Brave Nightly",
+    href: "https://brave.com/download-nightly/",
+    iconKey: "siBrave",
+    fallbackHex: "FB542B",
   },
   {
     label: "VS Code Insiders",
@@ -150,6 +151,26 @@ export const TOOLS: BadgeItem[] = [
     href: "https://visualstudio.microsoft.com/",
     iconKey: "siVisualstudio",
     fallbackHex: "5C2D91",
+  },
+];
+
+export const AGENTS: BadgeItem[] = [
+  {
+    label: "Claude Code",
+    href: "https://claude.com/claude-code",
+    iconKey: "siClaude",
+    fallbackHex: "D97757",
+  },
+  {
+    label: "Google Antigravity",
+    href: "https://antigravity.google",
+    iconKey: "siGooglegemini",
+    fallbackHex: "8E75B2",
+  },
+  {
+    label: "Occamy 1.0 35B-A3B",
+    fallbackHex: "A6E3A1",
+    note: "local",
   },
 ];
 
@@ -178,17 +199,25 @@ export function renderSocials(): string {
 export function renderChips(items: BadgeItem[]): string {
   return items
     .map((item) => {
-      const href = escapeHtml(item.href);
       const label = escapeHtml(item.label);
       const icon = item.iconKey ? iconsMap[item.iconKey] : undefined;
       const hex = icon?.hex || item.fallbackHex;
 
-      if (icon) {
-        const svg = `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${escapeHtml(icon.path)}"/></svg>`;
-        return `<a class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium hover:border-fg-muted transition-colors text-fg" href="${href}" target="_blank" rel="noopener" style="box-shadow: inset 3px 0 0 #${hex};">${svg}<span>${label}</span></a>`;
+      const iconHtml = icon
+        ? `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${escapeHtml(icon.path)}"/></svg>`
+        : `<span class="w-4 h-4 rounded-full shrink-0" style="background-color: #${hex};" aria-hidden="true"></span>`;
+
+      const noteHtml = item.note
+        ? `<span class="ml-1 rounded px-1.5 py-0.5 text-[11px] bg-muted text-fg-muted">${escapeHtml(item.note)}</span>`
+        : "";
+
+      const content = `${iconHtml}<span>${label}</span>${noteHtml}`;
+
+      if (item.href) {
+        const href = escapeHtml(item.href);
+        return `<a class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium hover:border-fg-muted transition-colors text-fg" href="${href}" target="_blank" rel="noopener" style="box-shadow: inset 3px 0 0 #${hex};">${content}</a>`;
       } else {
-        const dot = `<span class="w-4 h-4 rounded-full shrink-0" style="background-color: #${hex};" aria-hidden="true"></span>`;
-        return `<a class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium hover:border-fg-muted transition-colors text-fg" href="${href}" target="_blank" rel="noopener" style="box-shadow: inset 3px 0 0 #${hex};">${dot}<span>${label}</span></a>`;
+        return `<span class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium text-fg" style="box-shadow: inset 3px 0 0 #${hex};">${content}</span>`;
       }
     })
     .join("\n");

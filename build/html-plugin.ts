@@ -1,5 +1,6 @@
 import type { Plugin } from "vite";
-import { renderSocials, renderChips, escapeHtml, SKILLS, TOOLS } from "./badges.ts";
+import { renderSocials, renderChips, escapeHtml, SKILLS, TOOLS, AGENTS } from "./badges.ts";
+import { renderPinned } from "./pinned.ts";
 import { getStatsUrl, getTopLangsUrl, getTrophyUrl, getStreakUrl } from "../src/config.ts";
 
 export function htmlPlugin(): Plugin {
@@ -18,8 +19,10 @@ export function htmlPlugin(): Plugin {
 
       return html
         .replace(/<!--\s*@socials\s*-->/g, renderSocials())
+        .replace(/<!--\s*@pinned\s*-->/g, renderPinned())
         .replace(/<!--\s*@skills\s*-->/g, renderChips(SKILLS))
         .replace(/<!--\s*@tools\s*-->/g, renderChips(TOOLS))
+        .replace(/<!--\s*@agents\s*-->/g, renderChips(AGENTS))
         .replace(/<!--\s*@stats\s*-->/g, statsHtml);
     },
   };
