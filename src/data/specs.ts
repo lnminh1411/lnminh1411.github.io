@@ -1,7 +1,7 @@
 export const SPECS: ReadonlyArray<{ key: string; value: string }> = [
   { key: "OS", value: "Windows Insider Experimental (Future Platforms)" },
   { key: "CPU", value: "Intel Core Ultra 7 265K" },
-  { key: "Board", value: "Gigabyte B860M GAMING X WIFI 6E (rev 2.0)" },
+  { key: "Board", value: "Gigabyte B860M GAMING X WIFI 6E (rev 1.0)" },
   { key: "RAM", value: "64 GB DDR5-6000 CL36 (G.Skill Trident Z5 Neo 2x32)" },
   { key: "GPU", value: "Asus Dual RX 6600" },
   { key: "GPU", value: "Gigabyte RTX 3050 6GB" },
