@@ -100,7 +100,7 @@ export const COMMANDS: Record<string, CommandDefinition> = {
   tools: {
     description: "List tools & environments I use",
     run(_args, io) {
-      io.print("Git, WSL, Ubuntu, Brave Nightly, VS Code Insiders, Visual Studio");
+      io.print("Git, WSL, Ubuntu, Brave Nightly, VS Code Insiders");
       io.printLink("↓ jump to section", "#tools");
     },
   },
