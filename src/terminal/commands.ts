@@ -32,7 +32,7 @@ const OPEN_TARGETS: Record<string, string> = {
   facebook: "https://www.facebook.com/im.lnminh1411",
   discord: "https://discord.com/users/1243939761614356544",
   email: "mailto:contact@lnminh1411.is-a.dev",
-  messenger: "https://m.me/lenhatminh1411",
+  linkedin: "https://www.linkedin.com/in/nh%E1%BA%ADt-minh-l%C3%AA-a087a5425/",
 };
 
 function runSpecs(_args: string[], io: TerminalIO): void {
@@ -136,7 +136,7 @@ export const COMMANDS: Record<string, CommandDefinition> = {
       io.printLink("  Facebook:  @im.lnminh1411", OPEN_TARGETS["facebook"]!, "_blank");
       io.printLink("  Discord:   lnminh1411", OPEN_TARGETS["discord"]!, "_blank");
       io.printLink("  Email:     contact@lnminh1411.is-a.dev", OPEN_TARGETS["email"]!);
-      io.printLink("  Messenger: lenhatminh1411", OPEN_TARGETS["messenger"]!, "_blank");
+      io.printLink("  LinkedIn:  Nhật Minh Lê", OPEN_TARGETS["linkedin"]!, "_blank");
     },
   },
   open: {
@@ -144,8 +144,8 @@ export const COMMANDS: Record<string, CommandDefinition> = {
     run(args, io) {
       const target = args[0]?.toLowerCase();
       if (!target || !OPEN_TARGETS[target]) {
-        io.printDanger("Usage: open <github|instagram|facebook|discord|email|messenger>");
-        io.printMuted("Valid targets: github, instagram, facebook, discord, email, messenger");
+        io.printDanger("Usage: open <github|instagram|facebook|discord|email|linkedin>");
+        io.printMuted("Valid targets: github, instagram, facebook, discord, email, linkedin");
         return;
       }
       const url = OPEN_TARGETS[target]!;

@@ -14,6 +14,8 @@ export interface SocialItem {
   ariaLabel: string;
   iconKey?: string;
   isEmail?: boolean;
+  /** Trusted inline SVG markup for brands missing from simple-icons. */
+  svgBody?: string;
 }
 
 export function escapeHtml(str: string): string {
@@ -51,16 +53,17 @@ export const SOCIALS: SocialItem[] = [
     iconKey: "siDiscord",
   },
   {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/nh%E1%BA%ADt-minh-l%C3%AA-a087a5425/",
+    ariaLabel: "LinkedIn profile",
+    svgBody:
+      '<rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="10" width="2.5" height="8"/><circle cx="7.25" cy="6.75" r="1.5"/><path d="M11 18v-8h2.4v1.1c.5-.8 1.4-1.3 2.6-1.3 2 0 3 1.3 3 3.6V18h-2.5v-4.2c0-1.1-.4-1.8-1.4-1.8-1 0-1.6.7-1.6 1.8V18z"/>',
+  },
+  {
     name: "Email",
     href: "mailto:contact@lnminh1411.is-a.dev",
     ariaLabel: "Send email",
     isEmail: true,
-  },
-  {
-    name: "Messenger",
-    href: "https://m.me/lenhatminh1411",
-    ariaLabel: "Facebook Messenger",
-    iconKey: "siMessenger",
   },
 ];
 
@@ -172,6 +175,11 @@ export function renderSocials(): string {
     if (social.isEmail) {
       const emailSvg = `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`;
       return `<a href="${href}" aria-label="${aria}" class="inline-flex items-center justify-center w-11 h-11 text-fg-muted hover:text-fg focus-visible:text-fg transition-colors duration-150">${emailSvg}</a>`;
+    }
+
+    if (social.svgBody) {
+      const svg = `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${social.svgBody}</svg>`;
+      return `<a href="${href}" target="_blank" rel="noopener" aria-label="${aria}" class="inline-flex items-center justify-center w-11 h-11 text-fg-muted hover:text-fg focus-visible:text-fg transition-colors duration-150">${svg}</a>`;
     }
 
     const icon = social.iconKey ? iconsMap[social.iconKey] : undefined;
