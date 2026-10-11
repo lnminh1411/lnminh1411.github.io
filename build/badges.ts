@@ -105,22 +105,10 @@ export const SKILLS: BadgeItem[] = [
 
 export const TOOLS: BadgeItem[] = [
   {
-    label: "Windows Terminal",
-    href: "https://github.com/microsoft/terminal",
-    iconKey: "siWindowsterminal",
-    fallbackHex: "4D4D4D",
-  },
-  {
     label: "Git",
     href: "https://git-scm.com/",
     iconKey: "siGit",
     fallbackHex: "E44C30",
-  },
-  {
-    label: "Windows Insider Canary",
-    href: "https://aka.ms/CanaryChannelLatest",
-    iconKey: "siWindowsinsidercanary",
-    fallbackHex: "0078D6",
   },
   {
     label: "WSL",
