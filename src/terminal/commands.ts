@@ -107,7 +107,7 @@ export const COMMANDS: Record<string, CommandDefinition> = {
   agents: {
     description: "List AI agents I use and jump to section",
     run(_args, io) {
-      io.print("Claude Code, Google Antigravity, Occamy 1.0 35B-A3B (local)");
+      io.print("Claude Code, Google Antigravity, Occamy 1.0 35B-A3B");
       io.printLink("↓ jump to section", "#agents");
     },
   },
