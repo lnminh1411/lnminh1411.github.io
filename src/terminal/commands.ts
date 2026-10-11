@@ -100,7 +100,7 @@ export const COMMANDS: Record<string, CommandDefinition> = {
   tools: {
     description: "List tools & environments I use",
     run(_args, io) {
-      io.print("Git, WSL, Ubuntu, Brave Nightly, VS Code Insiders");
+      io.print("Git, WSL, Brave Nightly, VS Code Insiders, KiCad, OpenClaw, DeepSeek Harness");
       io.printLink("↓ jump to section", "#tools");
     },
   },
@@ -109,6 +109,13 @@ export const COMMANDS: Record<string, CommandDefinition> = {
     run(_args, io) {
       io.print("Claude Code, Google Antigravity, Occamy 1.0 35B-A3B");
       io.printLink("↓ jump to section", "#agents");
+    },
+  },
+  os: {
+    description: "List operating systems I run",
+    run(_args, io) {
+      io.print("Windows Experimental, Ubuntu Server LTS 26.x, Omarchy 4.x");
+      io.printLink("↓ jump to section", "#os");
     },
   },
   specs: {
