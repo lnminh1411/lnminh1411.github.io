@@ -1,5 +1,5 @@
 import { COMMANDS, type TerminalIO } from "./commands";
-import { flashbang, rickroll } from "../eggs";
+import { flashbang } from "../eggs";
 
 export function initTerminal(getCurrentTagline: () => string): void {
   const logEl = document.getElementById("term-log");
@@ -149,9 +149,6 @@ export function initTerminal(getCurrentTagline: () => string): void {
     },
     triggerFlashbang(): void {
       flashbang();
-    },
-    triggerRickroll(): void {
-      rickroll();
     },
   };
 

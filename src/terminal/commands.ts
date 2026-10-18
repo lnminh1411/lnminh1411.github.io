@@ -17,7 +17,6 @@ export interface TerminalIO {
   getHistory(): string[];
   getCurrentTagline(): string;
   triggerFlashbang(): void;
-  triggerRickroll(): void;
 }
 
 export interface CommandDefinition {
@@ -62,11 +61,11 @@ export const COMMANDS: Record<string, CommandDefinition> = {
     },
   },
   about: {
-    description: "Brief summary about me and jump to section",
+    description: "Brief summary about me",
     run(_args, io) {
-      io.print("High school student and self-taught front-end developer.");
-      io.printMuted("Building coding skills since 5th grade with experience across various languages.");
-      io.printLink("↓ jump to section", "#about");
+      io.print("Highschool student at FLSS-ULIS-VNU, Self-taught and AI Assisted full-stack developer.");
+      io.printMuted("Coding since 2020 with experience across various languages.");
+      io.printMuted("Used AI Agents to accelerate coding since May 2026.");
     },
   },
   projects: {
@@ -142,7 +141,9 @@ export const COMMANDS: Record<string, CommandDefinition> = {
       io.printLink("  Instagram: @im.lnminh1411", OPEN_TARGETS["instagram"]!, "_blank");
       io.printLink("  Facebook:  @im.lnminh1411", OPEN_TARGETS["facebook"]!, "_blank");
       io.printLink("  Discord:   lnminh1411", OPEN_TARGETS["discord"]!, "_blank");
-      io.printLink("  Email:     contact@lnminh1411.is-a.dev", OPEN_TARGETS["email"]!);
+      io.printLink("  Email:     contact@lnminh1411.is-a.dev", "mailto:contact@lnminh1411.is-a.dev");
+      io.printLink("  Email:     it@bsb-travel.com", "mailto:it@bsb-travel.com");
+      io.printLink("  Email:     founder@saccadeai.dev", "mailto:founder@saccadeai.dev");
       io.printLink("  LinkedIn:  Nhật Minh Lê", OPEN_TARGETS["linkedin"]!, "_blank");
     },
   },
@@ -229,14 +230,6 @@ export const COMMANDS: Record<string, CommandDefinition> = {
     hidden: true,
     run(_args, io) {
       io.print("nice try. this incident will be reported.");
-    },
-  },
-  wake: {
-    description: "Wake up sleeper",
-    hidden: true,
-    run(_args, io) {
-      io.print("he's sleeping. you were warned.");
-      io.triggerRickroll();
     },
   },
 };

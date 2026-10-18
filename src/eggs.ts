@@ -40,7 +40,6 @@ export function flashbang(): void {
   if (isFlashing) return;
 
   const moonBtn = document.getElementById("moon-btn");
-  const sleeper = document.getElementById("sleeper");
   const flashOverlay = document.getElementById("flashbang");
   const tagline = document.getElementById("tagline");
 
@@ -87,9 +86,6 @@ export function flashbang(): void {
         flashOverlay.hidden = true;
         flashOverlay.classList.remove("flashing");
       }
-      if (sleeper) {
-        sleeper.style.display = "none";
-      }
       document.documentElement.classList.add("lit");
       if (tagline) {
         tagline.textContent = "Is this enough light for you?";
@@ -108,7 +104,6 @@ export function flashbang(): void {
 
 export function initEggs(): void {
   const moonBtn = document.getElementById("moon-btn");
-  const sleeper = document.getElementById("sleeper");
 
   if (moonBtn) {
     moonBtn.addEventListener("click", () => {
@@ -117,12 +112,6 @@ export function initEggs(): void {
       } else {
         flashbang();
       }
-    });
-  }
-
-  if (sleeper) {
-    sleeper.addEventListener("click", () => {
-      rickroll();
     });
   }
 }

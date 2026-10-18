@@ -61,12 +61,6 @@ export const SOCIALS: SocialItem[] = [
     svgBody:
       '<rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="10" width="2.5" height="8"/><circle cx="7.25" cy="6.75" r="1.5"/><path d="M11 18v-8h2.4v1.1c.5-.8 1.4-1.3 2.6-1.3 2 0 3 1.3 3 3.6V18h-2.5v-4.2c0-1.1-.4-1.8-1.4-1.8-1 0-1.6.7-1.6 1.8V18z"/>',
   },
-  {
-    name: "Email",
-    href: "mailto:contact@lnminh1411.is-a.dev",
-    ariaLabel: "Send email",
-    isEmail: true,
-  },
 ];
 
 export const SKILLS: BadgeItem[] = [
@@ -227,7 +221,8 @@ export function renderSocials(): string {
   }).join("\n");
 }
 
-export function renderChips(items: BadgeItem[]): string {
+export function renderChips(items: BadgeItem[], stacked = false): string {
+  const layout = stacked ? "flex w-full bg-bg" : "inline-flex bg-card";
   return items
     .map((item) => {
       const label = escapeHtml(item.label);
@@ -248,9 +243,9 @@ export function renderChips(items: BadgeItem[]): string {
 
       if (item.href) {
         const href = escapeHtml(item.href);
-        return `<a class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium hover:border-fg-muted transition-colors text-fg" href="${href}" target="_blank" rel="noopener" style="box-shadow: inset 3px 0 0 #${hex};">${content}</a>`;
+        return `<a class="chip ${layout} items-center gap-2 border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium hover:border-fg-muted transition-colors text-fg" href="${href}" target="_blank" rel="noopener" style="box-shadow: inset 3px 0 0 #${hex};">${content}</a>`;
       } else {
-        return `<span class="chip inline-flex items-center gap-2 bg-card border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium text-fg" style="box-shadow: inset 3px 0 0 #${hex};">${content}</span>`;
+        return `<span class="chip ${layout} items-center gap-2 border border-border rounded-md px-3 py-2 min-h-11 text-sm font-medium text-fg" style="box-shadow: inset 3px 0 0 #${hex};">${content}</span>`;
       }
     })
     .join("\n");

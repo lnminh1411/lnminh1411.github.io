@@ -306,3 +306,21 @@ html.lit #tagline {
   position: relative;
 }
 
+
+/* Hide the page scrollbar (scrolling still works; #scroll-progress shows position) */
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth in-page jumps (hero arrow, terminal "jump to section" links) */
+html {
+  scroll-padding-top: 1.5rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

@@ -40,6 +40,20 @@ function initApp(): void {
     });
   });
 
+  // In-page anchors: scroll by layout position (offsetTop ignores the section-reveal
+  // transform, which otherwise makes the browser overshoot the target).
+  document.addEventListener("click", (e) => {
+    const link = (e.target as Element | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+    const id = link?.getAttribute("href")?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!link || !target) return;
+    e.preventDefault();
+    let top = 0;
+    for (let el: HTMLElement | null = target; el; el = el.offsetParent as HTMLElement | null) top += el.offsetTop;
+    window.scrollTo({ top: Math.max(0, top - 24) });
+    history.replaceState(null, "", `#${id}`);
+  });
+
   // Wire down-arrow fadeout on scroll > 10
   const heroArrow = document.getElementById("hero-arrow");
   window.addEventListener(

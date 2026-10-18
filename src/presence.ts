@@ -1,4 +1,5 @@
 import { subscribe, type Presence } from "./lanyard";
+import { subscribeActivity, activityVerb, type BrowserActivity } from "./activity";
 
 export function getVietnamTimeInfo(now: Date = new Date()) {
   const vnParts = new Intl.DateTimeFormat("en-US", {
@@ -91,6 +92,22 @@ export function initPresence(): void {
   const spotifyElapsed = document.getElementById("spotify-elapsed");
   const spotifyTotal = document.getElementById("spotify-total");
 
+  const activityCard = document.getElementById("activity-card");
+  const activityVerbEl = document.getElementById("activity-verb");
+  const activityName = document.getElementById("activity-name");
+  const activityElapsed = document.getElementById("activity-elapsed");
+  const activityIcon = document.getElementById("activity-icon") as HTMLImageElement | null;
+  const activityGlobe = document.getElementById("activity-globe");
+
+  function showActivityIcon(url: string | null): void {
+    if (!activityIcon || !activityGlobe) return;
+    const ok = !!url && url.startsWith("https://cdn.discordapp.com/app-icons/");
+    if (ok && activityIcon.src !== url) activityIcon.src = url;
+    activityIcon.hidden = !ok;
+    activityGlobe.hidden = ok;
+  }
+  activityIcon?.addEventListener("error", () => showActivityIcon(null));
+
   const vnTime24 = document.getElementById("vn-time-24");
   const vnTime12 = document.getElementById("vn-time-12");
   const vnTimeRel = document.getElementById("vn-time-rel");
@@ -103,6 +120,7 @@ export function initPresence(): void {
   }
 
   let latestPresence: Presence | null = null;
+  let latestActivity: BrowserActivity | null = null;
   const startedAt = Date.now();
 
   function updateClock(): void {
@@ -113,14 +131,31 @@ export function initPresence(): void {
 
     updatePresenceDisplay(timeInfo.hour);
     updateSpotifyProgress();
+    updateActivityElapsed();
+  }
+
+  function updateActivityElapsed(): void {
+    if (!activityElapsed) return;
+    const start = latestActivity?.start;
+    activityElapsed.hidden = !start;
+    if (start) activityElapsed.textContent = `${formatDuration(Date.now() - start)} elapsed`;
   }
 
   function updatePresenceDisplay(vnH?: number): void {
     const currentVnH = vnH ?? getVietnamTimeInfo().hour;
     const connecting = !latestPresence && Date.now() - startedAt < 10000;
-    const details = connecting
-      ? { text: "Connecting…", dotClass: "bg-offline" }
-      : getStatusDetails(latestPresence, currentVnH);
+    // A forwarded PreMiD activity overrides the Discord status line.
+    const details = latestActivity
+      ? { text: `${activityVerb(latestActivity.type)} ${latestActivity.name}`, dotClass: "bg-online" }
+      : connecting
+        ? { text: "Connecting…", dotClass: "bg-offline" }
+        : getStatusDetails(latestPresence, currentVnH);
+
+    if (activityCard) activityCard.hidden = !latestActivity;
+    if (latestActivity) {
+      if (activityVerbEl) activityVerbEl.textContent = activityVerb(latestActivity.type);
+      if (activityName) activityName.textContent = latestActivity.name;
+    }
 
     if (statusEl) {
       statusEl.textContent = details.text;
@@ -174,6 +209,13 @@ export function initPresence(): void {
     latestPresence = presence;
     updatePresenceDisplay();
     updateSpotifyProgress();
+  });
+
+  subscribeActivity((activity) => {
+    latestActivity = activity;
+    showActivityIcon(activity?.icon ?? null);
+    updatePresenceDisplay();
+    updateActivityElapsed();
   });
 
   updateClock();
