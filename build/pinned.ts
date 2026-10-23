@@ -26,7 +26,7 @@ export function renderPinned(): string {
 </button>`;
   });
 
-  return `<div class="grid gap-4 md:grid-cols-2">
+  return `<div class="grid gap-4 md:grid-cols-2 md:[&>*:last-child:nth-child(odd)]:col-span-2">
 ${cards.join("\n")}
 </div>`;
 }

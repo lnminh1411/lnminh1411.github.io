@@ -17,4 +17,10 @@ export const PINNED: readonly PinnedRepo[] = [
     fallbackDescription:
       "Built in 48 hours for the Vietnam AI Innovation Challenge hackathon.",
   },
+  {
+    owner: "lnminh1411",
+    repo: "local-llm-stack",
+    fallbackDescription:
+      "Local LLM stack: wake-on-request llama.cpp proxy, agent bridge on DeepSeek Harness, OpenClaw guardrails, ESP32 status feed.",
+  },
 ];
