@@ -23,4 +23,9 @@ export const PINNED: readonly PinnedRepo[] = [
     fallbackDescription:
       "Local LLM stack: wake-on-request llama.cpp proxy, agent bridge on DeepSeek Harness, OpenClaw guardrails, ESP32 status feed.",
   },
+  {
+    owner: "lnminh1411",
+    repo: "PC-Hardware-Control-Service",
+    fallbackDescription: "Windows service for fan and RGB control with ESP32 IPC. Built for one specific PC.",
+  },
 ];
