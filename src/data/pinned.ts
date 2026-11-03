@@ -13,9 +13,9 @@ export const PINNED: readonly PinnedRepo[] = [
   },
   {
     owner: "lnminh1411",
-    repo: "P2B-VAIC-Hackathon",
+    repo: "ESP32-Human-Presence-Radar",
     fallbackDescription:
-      "Built in 48 hours for the Vietnam AI Innovation Challenge hackathon.",
+      "ESP32-S3 desk presence board: LD2410C-P mmWave radar + VL53L1X ToF, ESP-NOW to ESP32 PC Control System, USB to PcHwCtl.",
   },
   {
     owner: "lnminh1411",
