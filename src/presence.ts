@@ -78,6 +78,19 @@ function formatDuration(ms: number): string {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+/** Long elapsed times: "m:ss", "h:mm:ss", or "Nd h:mm:ss". */
+export function formatElapsed(ms: number): string {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const days = Math.floor(total / 86400);
+  const hours = Math.floor((total % 86400) / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  const ss = seconds.toString().padStart(2, "0");
+  if (days === 0 && hours === 0) return `${minutes}:${ss}`;
+  const hms = `${hours}:${minutes.toString().padStart(2, "0")}:${ss}`;
+  return days > 0 ? `${days}d ${hms}` : hms;
+}
+
 export function initPresence(): void {
   const avatarImg = document.getElementById("avatar-img") as HTMLImageElement | null;
   const avatarFallback = document.getElementById("avatar-fallback");
@@ -138,7 +151,7 @@ export function initPresence(): void {
     if (!activityElapsed) return;
     const start = latestActivity?.start;
     activityElapsed.hidden = !start;
-    if (start) activityElapsed.textContent = `${formatDuration(Date.now() - start)} elapsed`;
+    if (start) activityElapsed.textContent = `${formatElapsed(Date.now() - start)} elapsed`;
   }
 
   function updatePresenceDisplay(vnH?: number): void {
